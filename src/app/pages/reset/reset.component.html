@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <h3 class="brand-text-align">Digital world</h3>
+  <div class="row grid">
+    <div class="order__left centered">
+      <div style="width: 77%;">
+        <img src="./../../../assets/image/empty-300x240.jpg" alt="cam-logo" style="width: 60px;border-radius: 10px;"
+          class="mb-3">
+        <h4>Enter your new password</h4>
+        <p style="color: #a0a2a1;">Must be different from previous passwords.</p>
+        <div class="mb-3">
+          <label for="login-password" class="form-label">Password</label>
+          <div class="password-container">
+            <input [type]="pwdType" class="form-control" id="login-password" placeholder="Password">
+            <i class="bi toggle-password" [ngClass]="{'bi-eye-slash':showPwdPreview, 'bi-eye':!showPwdPreview}"
+              (click)="togglePreview()" (keyup)="togglePreview()"></i>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="login-password" class="form-label">Confirm password</label>
+          <div class="password-container">
+            <input [type]="cfmPwdType" class="form-control" id="confirm-password" placeholder="Confirm password">
+            <i class="bi toggle-password" [ngClass]="{'bi-eye-slash':showCfmPwdPreview, 'bi-eye':!showCfmPwdPreview}"
+              (click)="togglePreviewCP()" (keyup)="togglePreviewCP()"></i>
+          </div>
+        </div>
+        <div class="mb-3">
+          <button type="button" style="width: 100%;" class="btn btn-success">Sign in</button>
+        </div>
+        <div class="mb-3">
+          <span style="color: #a0a2a1;">Remember password?&nbsp;</span><a class="pointer" (click)="signIn()">Sign in!</a>
+        </div>
+      </div>
+    </div>
+    <div class="order__right centered">
+      <img src="./../../../assets/image/empty-300x240.jpg" alt="brand-logo" class="brand-img-align">
+    </div>
+  </div>
+</div>

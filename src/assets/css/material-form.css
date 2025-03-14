@@ -1,0 +1,238 @@
+.myform-area .form-area .form-input{
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 40px 0 #e1e1e1;
+  }
+  .myform-area .form-area .form-input{
+/*      width: 50%;*/
+      background: #fff;
+      padding: 40px 30px;
+      
+  }
+
+  @media screen and (max-width: 720px) {
+    .myform-area .form-area .form-input{
+              padding: 14px;
+    }        
+  }    
+  .myform-area .form-area .form-input h2{
+    margin-bottom: 20px;
+      color: #07315B;
+  }
+  
+  .myform-area .form-area .form-input input{
+      position: relative;
+      height: 60px;
+      padding: 20px 0;
+  }
+  .myform-area .form-area .form-input textarea{
+      height: 120px;
+      padding: 20px 0;
+  }
+  
+  .myform-area .form-area .form-input input,
+  .myform-area .form-area .form-input textarea{
+      /* text-transform: capitalize; */
+      width: 100%;
+      box-sizing: border-box;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid #e1e1e1;
+      color: #07315B;
+      height: 47px;
+      min-height: 47px;
+  }
+  .myform-area .form-area .form-input form .form-group{
+      position: relative;
+  }
+  .myform-area .form-area .form-input form .form-group label{
+      position: absolute;
+      /* text-transform: capitalize; */
+      top: 20px;
+      left: 0;
+      pointer-events: none;
+      font-size: 16px;
+      /* color: #595959; */
+      color: #595959!important;
+      margin-bottom: 0;
+      transition: all .6s;
+  }
+  .myform-area .form-area .form-input input:focus ~ label,
+  .myform-area .form-area .form-input textarea:focus ~ label,
+  .myform-area .form-area .form-input input:valid ~ label,
+  .myform-area .form-area .form-input textarea:valid ~ label{
+      top: 0px;
+      opacity: 0.8;
+      left: 0;
+      color: rgba(103,58,183);
+      font-size: 12px;
+      color: #07315B;
+      font-weight: bold;
+  }
+  .myform-area .form-area .form-input input:focus,
+  .myform-area .form-area .form-input textarea:focus,
+  .myform-area .form-area .form-input input:valid,
+  .myform-area .form-area .form-input textarea:valid{
+      border-bottom: 2px solid rgba(103,58,183);
+      padding-bottom: 0px;
+      height: 45px;
+  }
+  .myform-area .form-area .form-text{
+      margin-top: 30px;
+  }
+  .myform-area .form-area .form-text span a{
+      color: rgba(103,58,183);
+  }
+  .myform-area .form-area .myform-button { 
+    /* .native-button */
+      margin-top: 30px;
+  }
+  .myform-area .form-area .myform-button .myform-btn, .native-button , .add-button{
+      /* width: 100%; */
+      width:200px;
+      /* height: 50px; */
+      /* font-size: 17px; */
+      padding: 12px;
+      background: #16375b; /*rgba(103,58,183);*/
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      -webkit-transition: all .5s;
+      -o-transition: all .5s;
+      transition: all .5s;
+      
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: .03em;
+      /* line-height: 1.2em; */
+      text-transform: uppercase;
+      /* font-size: 1.4rem; */
+      font-size: 16px;
+  }
+
+  
+
+
+
+  .native-button:hover{
+    background: #1e456f; /*rgba(103,58,183);*/
+ 
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s; 
+}
+
+.btn-outline-gnfz{
+    padding: 6px;
+    border: 1px solid #16375b;
+    border-radius: 5px;
+    color: #16375b;
+    cursor: pointer;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: .03em;
+    font-size: 16px;
+}
+.btn-outline-gnfz:hover{
+    border: 1px solid #16375b; 
+}
+
+  .native-button-outline, .native-button-outline-no-hover{
+    /* width: 100%; */
+    width: 200px;
+    /* height: 50px; */
+    /* font-size: 17px; */
+    padding: 11px;
+    background: #fff; /*rgba(103,58,183);*/
+    border: 1px solid #16375b;
+    border-radius: 5px;
+    color: #16375b;
+    cursor: pointer;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: .03em;
+    /* line-height: 1.2em; */
+    text-transform: uppercase;
+    /* font-size: 1.4rem; */
+    font-size: 16px;
+}
+
+.native-button-outline:hover{
+    background: #16375b;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    color: #fff!important; 
+}
+
+
+
+
+  .add-button{
+    width: 100%;
+    height: 50px;
+    /* font-size: 17px; */
+    background: #16375b; /*rgba(103,58,183);*/
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: .03em;
+    /* line-height: 1.2em; */
+    text-transform: uppercase;
+    font-size: 1.4rem;
+  }
+  
+  
+
+  .myform-area .form-area .myform-button .myform-btn-outline{
+    width: 100%;
+      height: 50px;
+      /* font-size: 17px; */
+        background: #fff;
+    border: 2px solid #16375b;
+    border-radius: 5px;
+    color: #16375b;
+     cursor: pointer;
+      -webkit-transition: all .5s;
+      -o-transition: all .5s;
+      transition: all .5s;
+
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: .03em;
+      /* line-height: 1.2em; */
+      text-transform: uppercase;
+      font-size: 1.4rem;
+  }
+
+  .myform-area .form-area .myform-button .myform-btn-outline:hover,
+  .myform-area .form-area .myform-button .myform-btn:hover{
+    background: #07315B;
+    color: #fff;
+}
+
+
+/* 
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+    border-bottom: 2px solid #e1e1e1;
+    
+    */

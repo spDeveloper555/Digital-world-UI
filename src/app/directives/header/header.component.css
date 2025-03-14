@@ -1,0 +1,99 @@
+  header {
+      box-sizing: border-box;
+      width: 100vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #155037;
+      padding: 1vh 3.5vw;
+      color: #fff;
+  }
+
+  header nav div.active {
+      border-bottom: 2px solid #fff;
+  }
+
+  header div {
+      color: inherit;
+      cursor: pointer;
+      font-size: 14px;
+  }
+
+  .user-profile {
+      background: #155037;
+      width: 33px;
+      height: 32px;
+      display: inline-table;
+      border-radius: 50%;
+      text-align: center;
+      border: 2px solid #ffffff9c;
+      text-shadow: 1px 1px 5px #000;
+      padding-top: 5px;
+      position: relative !important;
+      font-size: 12px !important;
+  }
+
+  .dropdown-menu {
+      font-size: 14px;
+  }
+
+  .site-logomark {
+      font-weight: bold;
+      font-size: 140% !important;
+      background-size: 0 250%;
+      background-repeat: no-repeat;
+      background-position: left center;
+      transition: color .12s ease-in-out, background-size .18s ease-in-out;
+      padding: .25em .5em;
+      height: 90%;
+      color: #c6c9c9;
+      font-family: ui-serif;
+  }
+
+  .site-logomark:hover,
+  .site-logomark:focus {
+      background-size: 250% 250%;
+      outline: none;
+  }
+
+  header nav {
+      width: 30vw;
+      min-width: 300px;
+      max-width: 400px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  @media(orientation: portrait) {
+      header {
+          top: unset;
+          bottom: 0;
+          justify-content: center;
+          border-bottom: none;
+      }
+
+      .site-logomark {
+          position: fixed;
+          font-size: 140% !important;
+          top: 1.5vh;
+          left: 50%;
+          height: min-content;
+          display: flex;
+          align-items: center;
+          padding: .5vh 1vw;
+          transform: translate(-50%);
+          color: #4f86e7 !important;
+          font-family: ui-serif;
+      }
+
+      header nav {
+          width: 100vw;
+          font-size: calc(.3em + 2vmin);
+          justify-content: space-around;
+          box-sizing: border-box;
+          padding: 0 1.5vmin;
+          max-width: unset;
+          min-width: unset;
+      }
+  }

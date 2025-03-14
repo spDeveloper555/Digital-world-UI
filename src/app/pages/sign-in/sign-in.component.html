@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <h3 class="brand-text-align">Digital world</h3>
+  <div class="row grid">
+    <div class="order__left centered">
+      <div style="width: 77%;">
+        <img src="./../../../assets/image/empty-300x240.jpg" alt="cam-logo" style="width: 60px;border-radius: 10px;"
+          class="mb-3">
+        <h4>Get started</h4>
+        <p style="color: #a0a2a1;">Welcome to digital world - Let's start your account</p>
+        <div class="mb-1">
+          <label for="login-email" class="form-label">Email</label>
+          <input type="text" class="form-control" id="login-email" [(ngModel)]="loginForm.email"
+            (change)="fieldChange('email', 'text', $event)" placeholder="name@example.com">
+          <div class="error-msg-def-h text-danger">{{errorObj['email']}}</div>
+        </div>
+        <div class="mb-3">
+          <div style="display: flex; justify-content: space-between; width: 100%;">
+            <label for="login-password" class="form-label">Password</label>
+            <a href="forgot-password">Forgot?</a>
+          </div>
+          <div class="password-container">
+            <input [type]="pwdType" [(ngModel)]="loginForm.password" (change)="fieldChange('password', 'text', $event)"
+              class="form-control" id="login-password" placeholder="Password">
+            <i class="bi toggle-password" [ngClass]="{'bi-eye-slash':showPwdPreview, 'bi-eye':!showPwdPreview}"
+              (click)="togglePreview()" (keyup)="togglePreview()"></i>
+          </div>
+          <div class="error-msg-def-h text-danger">{{errorObj['password']}}</div>
+        </div>
+        <div class="mb-1">
+          <button type="button" (click)="onSubmit()" style="width: 100%;" class="btn btn-success pointer">Sign
+            in</button>
+          <div class="error-msg-def-h text-danger">
+            {{ (errorMessage)?'*'+errorMessage:"" }}
+          </div>
+        </div>
+        <div class="mb-3">
+          <span style="color: #a0a2a1;">Don't have an account?&nbsp;</span><a class="pointer" (click)="signUp()">Sign
+            up!</a>
+        </div>
+      </div>
+    </div>
+    <div class="order__right centered">
+      <img src="./../../../assets/image/empty-300x240.jpg" alt="brand-logo" class="brand-img-align">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+.tagify__tag-text{
+    font-size: 14px;
+    margin-left: 0.35rem;
+}
+.tagify__tag{
+    border: 1px solid var(--tag-border-color);
+    border-radius: 1em;
+    --tag-inset-shadow-size: 200px;  
+}
+.tagify__tag:hover{
+    border: 1px solid var(--tag-hover);
+}
+.tagify__tag:has(.tagify__tag__removeBtn:hover){
+    border: 1px solid #f2dfdf10;
+}
+.tagify{
+    width: 100%;
+    --tag-border-color: lightgrey;
+    --tag-remove-btn-bg--hover:#c77777;
+}
+.tagify__tag div{
+    padding: 3px;
+}
+ /* *{
+    font-size:16pxem!important;
+} */
+
+.tag-holder{
+    min-height: 48px!important;
+}
+.tagify__tag:hover>div>*{
+    background: var(--tag-hover) !important;
+}
+
+.tagify__tag:has(.tagify__tag__removeBtn:hover)>div>*{
+    background: #f2dfdf10 !important;
+}
+
+.tagify__tag>div>* {
+    background: var(--tag-bg) !important;
+}
+.tagify__tag:hover .tagify__tag>div>*,
+.tagify__tag-text:hover {
+    background: var(--tag-hover) !important;
+}  
+
+.tagify__input{
+    padding: 4px!important;
+}
+.tagify {
+    padding: 0px!important;
+}
+
+.tagify[readonly] .tagify__tag-text,
+.tagify[readonly] .tags-look
+{
+    margin-left: 0px;
+}
+
+.tagify__tag__removeBtn{
+    min-width: 14px;
+}

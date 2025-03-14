@@ -1,0 +1,20 @@
+<header>
+    <div class="site-logomark">Digital world</div>
+    <nav>
+        <div [ngClass]="{'active': moduleName == 'dashboard'}" (click)="changeModule('dashboard')">Dashboard</div>
+        <div [ngClass]="{'active': moduleName == 'gallery'}" (click)="changeModule('gallery')">Gallery</div>
+        <div [ngClass]="{'active': moduleName == 'favourite'}" (click)="changeModule('favourite')">Favourite</div>
+        <div class="dropdown">
+            <div class="user-profile pointer" data-bs-toggle="dropdown" aria-expanded="false">
+                {{profileName}}
+            </div>
+            <ul class="dropdown-menu">
+                <ng-container *ngFor="let list of menuList">
+                    <li (click)="navigation(list.path)" (keyup)="navigation(list.path)"><a
+                            class="dropdown-item pointer">{{list.name}}</a></li>
+                </ng-container>
+                <li (click)="logout()" (keyup)="logout()"><a class="dropdown-item pointer">Sign out</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>

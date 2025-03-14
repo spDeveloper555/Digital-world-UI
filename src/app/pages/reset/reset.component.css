@@ -1,0 +1,72 @@
+.brand-img-align {
+    height: 90%;
+    width: 90%;
+    border-radius: 10px;
+}
+.brand-text-align {
+    position: absolute;
+    left: 3%;
+    top: 3%;
+    color: #dbdedc;
+    font-family: ui-serif
+}
+a {
+    text-decoration: none;
+    color: #212529;
+}
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.password-container input {
+    padding-right: 30px;
+}
+.password-container .toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+}
+
+.order__left {
+    order: 1;
+    padding: 40px;
+}
+
+.order__right {
+    order: 2;
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no__overflow {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 800px) {
+    .grid {
+        grid-template-columns: auto;
+    }
+    .order__left {
+        order: 2;
+        padding: 20px;
+    }
+    .order__right {
+        order: 1;
+    }
+    .centered {
+        align-items: flex-start;
+    }
+}

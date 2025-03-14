@@ -1,0 +1,140 @@
+.pc-tab > input,
+.pc-tab section > div {
+  display: none;
+}
+
+#tab1:checked ~ section .tab1,
+#tab2:checked ~ section .tab2,
+#tab3:checked ~ section .tab3,
+#tab4:checked ~ section .tab4,
+#tab5:checked ~ section .tab5,
+#tab6:checked ~ section .tab6,
+#tab7:checked ~ section .tab7,
+#tab8:checked ~ section .tab8,
+#tab9:checked ~ section .tab9,
+#tab10:checked ~ section .tab10,
+#tab11:checked ~ section .tab11 {
+  display: block;
+}
+
+#tab1:checked ~ nav .tab1,
+#tab2:checked ~ nav .tab2,
+#tab3:checked ~ nav .tab3,
+#tab4:checked ~ nav .tab4,
+#tab5:checked ~ nav .tab5,
+#tab6:checked ~ nav .tab6,
+#tab7:checked ~ nav .tab7,
+#tab8:checked ~ nav .tab8,
+#tab9:checked ~ nav .tab9,
+#tab10:checked ~ nav .tab10,
+#tab11:checked ~ nav .tab11 {
+  color: red;
+}
+
+/* Visual Styles */
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+ 
+
+.pc-tab {
+  width: 100%;
+  margin: 0 auto;
+}
+.pc-tab ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pc-tab ul li label {
+ 
+  float: left;
+  /* padding: 15px 25px; */
+  /* padding: 12px 15px; */
+  /* padding: 8px 15px; */
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-bottom: 0;
+  background: #eeeeee;
+  color: #444;
+  /* font-size: 16px!important; */
+  font-size: 15.5px!important;
+  cursor: pointer;
+}
+.pc-tab ul li label:hover {
+  background: #dddddd;
+}
+.pc-tab ul li label:active {
+  background: #ffffff;
+}
+.pc-tab ul li:not(:last-child) label {
+  border-right-width: 0;
+}
+.pc-tab section { 
+  clear: both;
+  position: relative;
+    top: 0.2px;
+}
+
+
+.pc-tab section .tab-container {
+  padding: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  background: #fff;
+  line-height: 1.5em;
+  letter-spacing: 0.3px;
+  color: #444;
+  /* min-height: 338px; */
+}
+/* .pc-tab section .tab-container input, .pc-tab section .tab-container select{
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom : 15px;
+}
+.pc-tab section .tab-container  h2 {
+  margin: 0;
+ 
+  letter-spacing: 1px;
+  color: #34495e;
+} */
+
+#tab1:checked ~ nav .tab1 label,
+#tab2:checked ~ nav .tab2 label,
+#tab3:checked ~ nav .tab3 label,
+#tab4:checked ~ nav .tab4 label,
+#tab5:checked ~ nav .tab5 label,
+#tab6:checked ~ nav .tab6 label,
+#tab7:checked ~ nav .tab7 label,
+#tab8:checked ~ nav .tab8 label,
+#tab9:checked ~ nav .tab9 label,
+#tab10:checked ~ nav .tab10 label,
+#tab11:checked ~ nav .tab11 label
+{
+  background: white;
+  color: #111;
+  position: relative;
+}
+#tab1:checked ~ nav .tab1 label:after,
+#tab2:checked ~ nav .tab2 label:after,
+#tab3:checked ~ nav .tab3 label:after,
+#tab4:checked ~ nav .tab4 label:after,
+#tab5:checked ~ nav .tab5 label:after,
+#tab6:checked ~ nav .tab6 label:after,
+#tab7:checked ~ nav .tab7 label:after,
+#tab8:checked ~ nav .tab8 label:after,
+#tab9:checked ~ nav .tab9 label:after,
+#tab10:checked ~ nav .tab10 label:after,
+#tab11:checked ~ nav .tab11 label:after
+ {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: #ffffff;
+  left: 0;
+  bottom: -1px;
+}

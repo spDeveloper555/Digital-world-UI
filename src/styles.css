@@ -1,0 +1,12 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.pointer {
+    cursor: pointer;
+}
+.error-msg-def-h {
+    height: 22px;
+}
