@@ -1,0 +1,27 @@
+<div class="header-container box-shadow d-flex justify-content-between">
+    <div>
+        <img src="./../../../assets/image/logo/sakthi e seva final.png" alt="askthi-logo" width="135px" class="ps-2">
+    </div>
+    <div>
+        <ul class="list-unstyled d-flex gap-5 mt-2 mb-0 me-2" style="font-size: 1.1rem;">
+            <li class="pointer position-relative pt-1">
+                <i class="far fa-bell"></i>
+                <span class="badge notification-badge">3</span>
+            </li>
+            <li class="pointer" style="line-height: normal;">
+                <div class="dropdown">
+                    <div class="user-profile" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="far fa-user"></i>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <ng-container *ngFor="let list of menuList">
+                            <li (click)="navigation(list.path)" (keyup)="navigation(list.path)"><a
+                                    class="dropdown-item pointer">{{list.name}}</a></li>
+                        </ng-container>
+                        <li (click)="logout()" (keyup)="logout()"><a class="dropdown-item pointer">Sign out</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

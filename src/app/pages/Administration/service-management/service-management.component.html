@@ -1,0 +1,58 @@
+<e-seva-sidenav [activePage]="'Service management'">
+    <div routerPage>
+        <div class="d-flex justify-content-between">
+            <div>
+                <h4 class="text-muted mb-3">Service management</h4>
+            </div>
+            <div style="width: 30%">
+                <input type="search" class="form-control" placeholder="Search..." autocomplete="off"/>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card p-2 bg-white mt-2 table-responsive custom-scrollbar" style="height: 73vh;">
+                    <table class="table table-smm table-stripedd table-hover table-flush">
+                        <thead>
+                            <tr class="header-row">
+                                <th>Service id</th>
+                                <th>Service type</th>
+                                <th>User name</th>
+                                <th>Start date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngIf="!isLoading && servies.length>0; else checkLoadingTemplate">
+                                <tr *ngFor="let service of servies">
+                                    <td>{{service['serviceId']}}</td>
+                                    <td>{{service['serviceType']}}</td>
+                                    <td>{{service['userName']}}</td>
+                                    <td>{{service['startDate']}}</td>
+                                    <td>{{service['status']}}</td>
+                                </tr>
+                            </ng-container>
+                            <ng-template #checkLoadingTemplate>
+                                <ng-container *ngIf="!isLoading && servies.length==0; else loadingTemplate">
+                                    <tr>
+                                        <td colspan="5" class="text-center skip-hover">
+                                            No records to show
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                                <ng-template #loadingTemplate>
+                                    <tr *ngFor="let service of 10 | num_sequence" class="skip-hover">
+                                        <td><span class="content-placeholder">&nbsp;</span></td>
+                                        <td><span class="content-placeholder">&nbsp;</span></td>
+                                        <td><span class="content-placeholder">&nbsp;</span></td>
+                                        <td><span class="content-placeholder">&nbsp;</span></td>
+                                        <td><span class="content-placeholder">&nbsp;</span></td>
+                                    </tr>
+                                </ng-template>
+                            </ng-template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</e-seva-sidenav>

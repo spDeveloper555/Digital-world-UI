@@ -1,15 +1,13 @@
-import { DashboardComponent } from "./home/dashboard.component";
-import { LoginComponent } from "./sign-in/sign-in.component";
-import { RegisterComponent } from "./sign-up/sign-up.component";
-import { ForgotComponent } from "./forgot/forgot.component";
-import { ResetComponent } from "./reset/reset.component";
-import { QrGeneratorComponent } from "./qr-generator/qr-generator.component";
+import { AdministrationDeclaration } from "./Administration/administration.declaration";
+import { RegisterComponent } from "./authentication/sign-up/sign-up.component";
+import { ForgotComponent } from "./authentication/forgot/forgot.component";
+import { ResetComponent } from "./authentication/reset/reset.component";
+import { LoginComponent } from "./authentication/sign-in/sign-in.component"
 
 export const PagesDeclaration = [
     LoginComponent,
     RegisterComponent,
     ForgotComponent,
-    DashboardComponent,
     ResetComponent,
-    QrGeneratorComponent
+    AdministrationDeclaration,
 ];

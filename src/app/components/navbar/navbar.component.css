@@ -1,0 +1,38 @@
+.header-container {
+  background-color: #d6e7f1;
+  padding: 14px;
+  position: fixed;
+  z-index: 9;
+  width: 100%;
+}
+
+.notification-badge {
+  top: -8px;
+  right: -14px;
+  position: absolute;
+  color: #e44e25;
+}
+
+.mail-badge {
+  top: -8px;
+  right: -16px;
+  position: absolute;
+  color: #e44e25;
+}
+
+.dropdown-menu {
+  font-size: 14px;
+}
+
+.user-profile {
+  background: #f1f4f3;
+  width: 33px;
+  height: 32px;
+  display: inline-table;
+  border-radius: 50%;
+  text-align: center;
+  border: 2px solid #ffffff9c;
+  text-shadow: 1px 1px 5px #f7f4f4;
+  padding-top: 5px;
+  font-size: 12px !important;
+}

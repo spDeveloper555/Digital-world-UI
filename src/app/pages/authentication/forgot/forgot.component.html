@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <h3 class="brand-text-align">Digital world</h3>
+  <div class="row grid">
+    <div class="order__left centered">
+      <div style="width: 77%;">
+        <img src="./../../../assets/image/logo/sakthi e seva final.jpg" alt="cam-logo" style="width: 100px;"
+          class="mb-3">
+        <h4>Forgot password?</h4>
+        <p style="color: #a0a2a1;">No worries, we'll send you password reset instructions.</p>
+        <div class="mb-1">
+          <label for="login-email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="login-email" [(ngModel)]="resetForm.email"
+          (change)="fieldChange('email', 'text', $event)" placeholder="name@example.com">
+          <div class="error-msg-def-h text-danger">{{errorObj['email']}}</div>
+        </div>
+        <div class="mb-3">
+          <button type="button" style="width: 100%;" class="btn btn-success" (click)="resetPassword()">Reset password</button>
+        </div>
+        <div class="mb-3">
+          <span style="color: #a0a2a1;">Remember password?&nbsp;</span><a class="pointer" (click)="signIn()">Sign in!</a>
+        </div>
+      </div>
+    </div>
+    <div class="order__right centered">
+      <img src="./../../../assets/image/logo/sakthi e seva final mk.jpg" alt="brand-logo" class="brand-img-align">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <h3 class="brand-text-align">Digital world</h3>
+  <div class="row grid">
+    <div class="order__left centered">
+      <div>
+        <h4>Get started</h4>
+        <p style="color: #a0a2a1;">Welcome to Sakthi E - SEVA - Let's create your account</p>
+        <div class="mb-3" style="display: flex; justify-content: space-between;">
+          <div>
+            <label for="sign-up-f-name" class="form-label">First name</label>
+            <input type="text" class="form-control" id="sign-up-f-name" [(ngModel)]="registerForm.firstName"
+              (change)="fieldChange('firstName', 'text', $event)" placeholder="First name">
+            <div class="error-msg-def-h text-danger">{{errorObj['firstName']}}</div>
+          </div>
+          <div class="ms-3">
+            <label for="sign-up-l-name" class="form-label">Last name</label>
+            <input type="text" class="form-control" id="sign-up-l-name" [(ngModel)]="registerForm.lastName"
+              (change)="fieldChange('lastName', 'text', $event)" placeholder="Last name">
+            <div class="error-msg-def-h text-danger">{{errorObj['lastName']}}</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="sign-up-email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="sign-up-email" [(ngModel)]="registerForm.email"
+            (change)="fieldChange('email', 'text', $event)" placeholder="name@example.com">
+          <div class="error-msg-def-h text-danger">{{errorObj['email']}}</div>
+        </div>
+        <div class="mb-3">
+          <label for="sign-up-password" class="form-label">Password</label>
+          <div class="password-container">
+            <input [type]="pwdType" class="form-control" id="sign-up-password" [(ngModel)]="registerForm.password"
+              (change)="fieldChange('password', 'text', $event)" placeholder="Password">
+            <i class="bi toggle-password" [ngClass]="{'bi-eye-slash':showPwdPreview, 'bi-eye':!showPwdPreview}"
+              (click)="togglePreview()" (keyup)="togglePreview()"></i>
+          </div>
+          <div class="error-msg-def-h text-danger">{{errorObj['password']}}</div>
+        </div>
+        <div class="mb-3">
+          <button type="button" style="width: 100%;" class="btn btn-success" (click)="onSubmit()">Sign up</button>
+        </div>
+        <div class="mb-3">
+          <span style="color: #a0a2a1;">Already have an account?&nbsp;</span><a class="pointer" (click)="signIn()">Sign
+            in!</a>
+        </div>
+      </div>
+    </div>
+    <div class="order__right centered">
+      <img src="./../../../assets/image/logo/sakthi e seva final mk.jpg" alt="brand-logo" class="brand-img-align">
+    </div>
+  </div>
+</div>

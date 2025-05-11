@@ -11,6 +11,12 @@ export class ApiService {
   login(data: any) {
     return this.post('login', data)
   }
+  register(data: any) {
+    return this.post('register', data)
+  }
+  userList(data:any) {
+    return this.post('user/list', data)
+  }
 
   post(url: string, params: any) {
     try {

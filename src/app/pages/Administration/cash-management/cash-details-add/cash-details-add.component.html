@@ -1,0 +1,93 @@
+<e-seva-sidenav [activePage]="'Cash management'">
+    <div routerPage>
+        <div class="row align-items-center mb-3">
+            <div class="col-12 col-md-4">
+                <h4 class="text-muted mb-3 mb-md-0">Cash details add</h4>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="d-flex flex-column flex-md-row justify-content-md-end">
+                    <button type="button" class="btn btn-outline-secondary ms-md-3"
+                        (click)="navigation('administration/cash-management')">
+                        <i class="fas fa-arrow-left"></i> Go back
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card p-2 bg-white mt-2 table-responsive custom-scrollbar" style="height: 73vh;">
+                    <div class="row mt-3 mx-0">
+                        <div class="col-4">
+                            <label for="sign-up-f-name" class="form-label">Service</label>
+                            <input type="text" class="form-control" id="sign-up-f-name"
+                                [(ngModel)]="paymentDetailsForm.service"
+                                (change)="fieldChange('service', 'text', $event)" placeholder="Service">
+                            <div class="error-msg-def-h text-danger">{{errorObj['service']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="sign-up-l-name" class="form-label">Payment source</label>
+                            <input type="text" class="form-control" id="sign-up-l-name"
+                                [(ngModel)]="paymentDetailsForm.payment"
+                                (change)="fieldChange('payment', 'text', $event)" placeholder="Payment source">
+                            <div class="error-msg-def-h text-danger">{{errorObj['payment']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="sign-up-l-name" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="sign-up-l-name"
+                                [(ngModel)]="paymentDetailsForm.date"
+                                (change)="fieldChange('date', 'text', $event)" placeholder="Date">
+                            <div class="error-msg-def-h text-danger">{{errorObj['date']}}</div>
+                        </div>
+                    </div>
+                    <div class="row mt-3 mx-0">
+                        <div class="col-4">
+                            <label for="sign-up-f-name" class="form-label">First name</label>
+                            <input type="text" class="form-control" id="sign-up-f-name"
+                                [(ngModel)]="paymentDetailsForm.firstName"
+                                (change)="fieldChange('firstName', 'text', $event)" placeholder="First name">
+                            <div class="error-msg-def-h text-danger">{{errorObj['firstName']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="sign-up-l-name" class="form-label">Last name</label>
+                            <input type="text" class="form-control" id="sign-up-l-name"
+                                [(ngModel)]="paymentDetailsForm.lastName"
+                                (change)="fieldChange('lastName', 'text', $event)" placeholder="Last name">
+                            <div class="error-msg-def-h text-danger">{{errorObj['lastName']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="sign-up-l-name" class="form-label">Last name</label>
+                            <input type="text" class="form-control" id="sign-up-l-name"
+                                [(ngModel)]="paymentDetailsForm.lastName"
+                                (change)="fieldChange('lastName', 'text', $event)" placeholder="Last name">
+                            <div class="error-msg-def-h text-danger">{{errorObj['lastName']}}</div>
+                        </div>
+                    </div>
+                    <div class="row mt-3 mx-0">
+                        <div class="col-4">
+                            <label for="sign-up-f-name" class="form-label">First name</label>
+                            <input type="text" class="form-control" id="sign-up-f-name"
+                                [(ngModel)]="paymentDetailsForm.firstName"
+                                (change)="fieldChange('firstName', 'text', $event)" placeholder="First name">
+                            <div class="error-msg-def-h text-danger">{{errorObj['firstName']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="sign-up-l-name" class="form-label">Last name</label>
+                            <input type="text" class="form-control" id="sign-up-l-name"
+                                [(ngModel)]="paymentDetailsForm.lastName"
+                                (change)="fieldChange('lastName', 'text', $event)" placeholder="Last name">
+                            <div class="error-msg-def-h text-danger">{{errorObj['lastName']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="sign-up-l-name" class="form-label">Last name</label>
+                            <input type="text" class="form-control" id="sign-up-l-name"
+                                [(ngModel)]="paymentDetailsForm.lastName"
+                                (change)="fieldChange('lastName', 'text', $event)" placeholder="Last name">
+                            <div class="error-msg-def-h text-danger">{{errorObj['lastName']}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</e-seva-sidenav>

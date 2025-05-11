@@ -2,7 +2,7 @@ import { Component, Input, ElementRef, ViewChild } from '@angular/core';
 import * as QRCode from 'qrcode';
 
 @Component({
-  selector: 'app-qr-code',
+  selector: 'e-seva-qr-code',
   templateUrl: './qr-code.component.html',
   styleUrls: ['./qr-code.component.css']
 })

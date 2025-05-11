@@ -1,0 +1,25 @@
+<e-seva-navbar></e-seva-navbar>
+<div class="sidebar shadow-sm" [ngClass]="isSideNavOpened ? 'open' : ''">
+  <div class="logo-details">
+    <div *ngIf="isSideNavOpened" class="logo_name">
+      Sakthi E - SEVA
+    </div>
+    <i [ngClass]="isSideNavOpened ? 'bx-menu-alt-right' : 'bx-menu'" (click)="toggleSideBar()" (keyup)="toggleSideBar()"
+      class="fa fa-bars" id="btn"></i>
+  </div>
+  <div class="menu-header mt-3 mb-2">{{isSideNavOpened?'ADMINISTRATION':'ADMIN'}}</div>
+  <ul class="nav-list" *ngIf="navItems">
+    <li *ngFor="let navItem of navItems" data-bs-toggle="tooltip">
+      <a [routerLink]="navItem.url" routerLinkActive="active-nav-item" [class.active]="activePage === navItem.name">
+        <i [ngClass]="navItem.icon" aria-hidden="true" title="{{ navItem.name }}"></i>
+        <span class="links_name">{{ navItem.name }}</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<section class="home-section">
+  <div class="p-4 pb-0">
+    <div style="margin-top: 66px;"></div>
+    <ng-content select="[routerPage]"></ng-content>
+  </div>
+</section>
