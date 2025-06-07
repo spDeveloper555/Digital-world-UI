@@ -57,7 +57,7 @@ h1 {
 }
 
 .footer {
-  margin-top: 40px;
+  margin: 40px 10px 20px 10px;
   font-size: 12px;
   color: #666;
   text-align: center;
@@ -78,7 +78,7 @@ h1 {
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: url('./../../../../../assets/image/logo/sakthi e seva final.png');
+  background-image: url('./../../../../../assets/image/logo/sakthi-rm-logo.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: left bottom;

@@ -187,20 +187,18 @@ export class CashDetailsAddComponent implements OnInit {
                 .bg-image::before {
                   content: "";
                   position: absolute;
-                  top: 0;
+                  top: 80;
                   left: 0;
                   height: 100%;
                   width: 100%;
                   background-image: url('./../../../../../assets/image/logo/sakthi-rm-logo.png');
                   background-repeat: no-repeat;
-                  background-size: cover;
-                  background-position: left bottom;
                   opacity: 0.15;
                   z-index: -1;
                   pointer-events: none;
                 }
               .footer {
-                margin-top: 20px;
+                margin: 40px 10px 20px 10px;
                 font-size: 12px;
                 color: #666;
                 text-align: center;
@@ -280,7 +278,7 @@ export class CashDetailsAddComponent implements OnInit {
               }
 
               .footer {
-                margin-top: 20px;
+                margin: 40px 10px 20px 10px;
                 font-size: 12px;
                 color: #666;
                 text-align: center;
@@ -293,14 +291,13 @@ export class CashDetailsAddComponent implements OnInit {
                 .bg-image::before {
                   content: "";
                   position: absolute;
-                  top: 0;
+                  top: 80;
                   left: 0;
                   height: 100%;
                   width: 100%;
                   background-image: url('./../../../../../assets/image/logo/sakthi-rm-logo.png');
                   background-repeat: no-repeat;
-                  background-size: cover;
-                  background-position: left bottom;
+
                   opacity: 0.15;
                   z-index: -1;
                   pointer-events: none;
@@ -321,7 +318,8 @@ export class CashDetailsAddComponent implements OnInit {
     let res: any = await this.api.cashDetailsAdd({ 'invoice_details': this.invoiceServies })?.catch((error: any) => { console.log(error) });
     if (res['status'] == 'success') {
       this.invoiceID = res['invoiceID'];
-      this.customerInfo = res['customerInfo'];
+      if(res['customerInfo']?.['name']) this.customerInfo['name'] = res['customerInfo']['name'];
+      if(res['customerInfo']?.['mobileNo']) this.customerInfo['mobileNo'] = res['customerInfo']['mobileNo'];
     }
     return res;
   }
