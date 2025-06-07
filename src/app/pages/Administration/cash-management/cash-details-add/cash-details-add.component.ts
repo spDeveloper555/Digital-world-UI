@@ -34,7 +34,7 @@ export class CashDetailsAddComponent implements OnInit {
   public services_obj: any = current_services;
   public services: any = Object.keys(this.services_obj);
   public shopInfo = {
-    name: 'Shakthi E-SEVA',
+    name: 'Shakthi E-Seva',
     address: 'Melur, Kallakurichi - 606201',
     mobileNo: '63793 05484',
     email: 'sakthieseva.csc@gmail.com'
