@@ -191,7 +191,7 @@ export class CashDetailsAddComponent implements OnInit {
                   left: 0;
                   height: 100%;
                   width: 100%;
-                  background-image: url('./../../../../../assets/image/logo/sakthi e seva final.png');
+                  background-image: url('./../../../../../assets/image/logo/sakthi-rm-logo.png');
                   background-repeat: no-repeat;
                   background-size: cover;
                   background-position: left bottom;
@@ -297,7 +297,7 @@ export class CashDetailsAddComponent implements OnInit {
                   left: 0;
                   height: 100%;
                   width: 100%;
-                  background-image: url('./../../../../../assets/image/logo/sakthi e seva final.png');
+                  background-image: url('./../../../../../assets/image/logo/sakthi-rm-logo.png');
                   background-repeat: no-repeat;
                   background-size: cover;
                   background-position: left bottom;
@@ -367,7 +367,7 @@ export class CashDetailsAddComponent implements OnInit {
       this.errorObj = formValidation['message'];
       return;
     }
-    this.api.cashDetailsAdd([obj])?.then((res: any) => {
+    this.api.cashDetailsAdd({ 'invoice_details': [obj] })?.then((res: any) => {
       if (res['status'] == 'success') {
         this.navigation('administration/cash-management')
       }
