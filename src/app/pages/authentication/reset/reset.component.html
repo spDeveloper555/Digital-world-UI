@@ -11,7 +11,7 @@
           <label for="login-password" class="form-label">Password</label>
           <div class="password-container">
             <input [type]="pwdType" class="form-control" id="login-password" placeholder="Password">
-            <i class="bi toggle-password" [ngClass]="{'bi-eye-slash':showPwdPreview, 'bi-eye':!showPwdPreview}"
+            <i class="fa toggle-password" [ngClass]="{'fa-eye-slash':showPwdPreview, 'fa-eye':!showPwdPreview}"
               (click)="togglePreview()" (keyup)="togglePreview()"></i>
           </div>
         </div>
@@ -19,7 +19,7 @@
           <label for="login-password" class="form-label">Confirm password</label>
           <div class="password-container">
             <input [type]="cfmPwdType" class="form-control" id="confirm-password" placeholder="Confirm password">
-            <i class="bi toggle-password" [ngClass]="{'bi-eye-slash':showCfmPwdPreview, 'bi-eye':!showCfmPwdPreview}"
+            <i class="fa toggle-password" [ngClass]="{'fa-eye-slash':showCfmPwdPreview, 'fa-eye':!showCfmPwdPreview}"
               (click)="togglePreviewCP()" (keyup)="togglePreviewCP()"></i>
           </div>
         </div>

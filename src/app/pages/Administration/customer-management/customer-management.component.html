@@ -1,0 +1,81 @@
+<e-seva-sidenav [activePage]="'Customer management'">
+    <div routerPage>
+        <div class="row align-items-center mb-3">
+            <div class="col-12 col-md-4">
+                <h4 class="text-muted mb-3 mb-md-0">Customer management</h4>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="d-flex flex-column flex-md-row justify-content-md-end">
+                    <input type="search" style="width: 48%;" #searchInput (change)="onSearchChange(searchInput.value)"
+                        (input)="onSearchChange(searchInput.value)" (keyup)="onSearchChange(searchInput.value)"
+                        class="form-control mb-2 mb-md-0" placeholder="Search..." autocomplete="off" />
+                    <button type="button" class="btn btn-outline-secondary ms-md-3"
+                        (click)="navigation('administration/customer-management/add')">
+                        <i class="fas fa-plus me-1"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card p-2 bg-white mt-2 table-responsive custom-scrollbar" style="height: 73vh;">
+                    <table class="table table-smm table-stripedd table-hover table-flush">
+                        <thead>
+                            <tr class="header-row">
+                                <th style="width: 80px;">S.No</th>
+                                <th style="min-width: 130px;">Customer ID</th>
+                                <th style="min-width: 160px;">Customer Name</th>
+                                <th style="min-width: 160px;">Father Name</th>
+                                <th style="min-width: 150px;">Email</th>
+                                <th style="min-width: 150px;">Address</th>
+                                <th style="width: 140px;" class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngIf="!isLoading && customerServies.length>0; else checkLoadingTemplate">
+                                <tr *ngFor="let service of customerServies; let i = index">
+                                    <td class="text-center">{{ i + 1 }}.</td>
+                                    <td>{{service['customerID']}}</td>
+                                    <td>{{service['name']}}</td>
+                                    <td>{{(service?.['fatherName'])?service['fatherName']:'-'}}</td>
+                                    <td>{{(service?.['email'])?service['email']:'-'}}</td>
+                                    <td class="text-center nowrap-ellipsis" style="max-width: 200px;">{{(service?.['location'])?service['location']:'-'}}</td>
+                                    <td class="text-center nowrap-ellipsis" style="width: 140px;">
+                                        <i class="fas fa-history me-3 pointer"
+                                            (click)="viewCustomerDetail(service['customerDataID'])"
+                                            (keyup)="viewCustomerDetail(service['customerDataID'])"></i>
+                                        <i class="fas fa-edit me-3 pointer"
+                                            (click)="editCustomerDetail(service['customerDataID'])"
+                                            (keyup)="editCustomerDetail(service['customerDataID'])"></i>
+                                        <i class="fas fa-trash pointer" (click)="trashCustomerDetail(service['customerDataID'])"
+                                            (keyup)="trashCustomerDetail(service['customerDataID'])"></i>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <ng-template #checkLoadingTemplate>
+                                <ng-container *ngIf="!isLoading && customerServies.length==0; else loadingTemplate">
+                                    <tr>
+                                        <td colspan="10" class="text-center skip-hover">
+                                            No records to show
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                                <ng-template #loadingTemplate>
+                                    <tr *ngFor="let tr of 10 | num_sequence" class="skip-hover">
+                                        <td *ngFor="let td of 7 | num_sequence"><span
+                                                class="content-placeholder">&nbsp;</span></td>
+                                    </tr>
+                                </ng-template>
+                            </ng-template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</e-seva-sidenav>
+
+<e-seva-confirm-modal *ngIf="showConfirm" [title]="'Warning!'"
+    [message]="'Are you sure you want to delete this customer details?'" (confirmed)="handleConfirm($event)">
+</e-seva-confirm-modal>

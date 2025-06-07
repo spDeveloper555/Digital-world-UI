@@ -45,10 +45,20 @@ export class LoginComponent {
     this.api.login(obj)?.then((res: any) => {
       if (res['status'] == 'success') {
         if (this.authService.login(res['token'])) {
-          this.router.navigate(['administration/dashboard']);
+          this.getProfileView();
+          this.router.navigate(['administration/cash-management']);
         }
       }else {
         this.errorMessage = 'Invalid credentials.';
+      }
+    }).catch((error: any) => {
+      console.log(error)
+    });
+  }
+  getProfileView() {
+    this.api.profileView({})?.then((res: any) => {
+      if (res['status'] == 'success') {
+        localStorage.setItem('userDetails', JSON.stringify(res['data']));
       }
     }).catch((error: any) => {
       console.log(error)

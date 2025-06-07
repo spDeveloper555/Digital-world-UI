@@ -3,11 +3,14 @@ import { CashManagementComponent } from "./cash-management/cash-management.compo
 import { ServiceManagementComponent } from "./service-management/service-management.component";
 import { UserManagementComponent } from "./user-management/user-management.component";
 import { CashDeclaration } from "./cash-management/cash.declaration";
-
+import { CustomerManagementComponent } from "./customer-management/customer-management.component";
+import { CustomerDeclaration } from "./customer-management/customer.declaration"
 export const AdministrationDeclaration = [
     DashboardComponent,
     ServiceManagementComponent,
     CashManagementComponent,
     UserManagementComponent,
-    CashDeclaration
+    CustomerManagementComponent,
+    CashDeclaration,
+    CustomerDeclaration
 ];

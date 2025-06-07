@@ -1,8 +1,8 @@
-<e-seva-sidenav [activePage]="'Cash management'">
+<e-seva-sidenav [activePage]="'Invoice'">
     <div routerPage>
         <div class="row align-items-center mb-3">
             <div class="col-12 col-md-4">
-                <h4 class="text-muted mb-3 mb-md-0">Cash details add</h4>
+                <h4 class="text-muted mb-3 mb-md-0">Invoice</h4>
             </div>
             <div class="col-12 col-md-8">
                 <div class="d-flex flex-column flex-md-row justify-content-md-end">
@@ -17,77 +17,208 @@
         <div class="row mb-4">
             <div class="col-md-12">
                 <div class="card p-2 bg-white mt-2 table-responsive custom-scrollbar" style="height: 73vh;">
-                    <div class="row mt-3 mx-0">
+                    <div class="row mt-2 mx-0">
                         <div class="col-4">
-                            <label for="sign-up-f-name" class="form-label">Service</label>
-                            <input type="text" class="form-control" id="sign-up-f-name"
-                                [(ngModel)]="paymentDetailsForm.service"
-                                (change)="fieldChange('service', 'text', $event)" placeholder="Service">
+                            <label for="cash-detail-service" class="form-label">Service</label>
+                            <div class="dropdown">
+                                <input type="text" class="form-control" placeholder="Search service..."
+                                    [(ngModel)]="paymentDetailsForm.service" (focus)="dropdownOpen = true"
+                                    (blur)="closeDropdownWithDelay()" />
+
+                                <ul class="dropdown-menu show w-100" *ngIf="dropdownOpen"
+                                    style="max-height: 200px; overflow-y: auto; position: absolute; z-index: 1000;">
+                                    <ng-container *ngIf="filteredServices().length; else noResult">
+                                        <li *ngFor="let option of filteredServices()"
+                                            (mousedown)="selectService(option)">
+                                            <a class="dropdown-item" href="#">{{ option }}</a>
+                                        </li>
+                                    </ng-container>
+
+                                    <ng-template #noResult>
+                                        <li class="dropdown-item text-muted">No options found</li>
+                                    </ng-template>
+                                </ul>
+                            </div>
                             <div class="error-msg-def-h text-danger">{{errorObj['service']}}</div>
                         </div>
                         <div class="col-4">
-                            <label for="sign-up-l-name" class="form-label">Payment source</label>
-                            <input type="text" class="form-control" id="sign-up-l-name"
-                                [(ngModel)]="paymentDetailsForm.payment"
-                                (change)="fieldChange('payment', 'text', $event)" placeholder="Payment source">
-                            <div class="error-msg-def-h text-danger">{{errorObj['payment']}}</div>
+                            <label for="cash-detail-sub-service" class="form-label">Sub Service</label>
+                            <input type="text" class="form-control" id="cash-detail-sub-service"
+                                [(ngModel)]="paymentDetailsForm.subService"
+                                (change)="fieldChange('subService', 'text', $event)" placeholder="Sub Service">
+                            <div class="error-msg-def-h text-danger">{{errorObj['subService']}}</div>
                         </div>
                         <div class="col-4">
-                            <label for="sign-up-l-name" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="sign-up-l-name"
-                                [(ngModel)]="paymentDetailsForm.date"
-                                (change)="fieldChange('date', 'text', $event)" placeholder="Date">
+                            <label for="cash-detail-reference-id" class="form-label">Reference ID</label>
+                            <input type="text" class="form-control" id="cash-detail-reference-id"
+                                [(ngModel)]="paymentDetailsForm.ReferenceID"
+                                (change)="fieldChange('ReferenceID', 'text', $event)" placeholder="Reference ID">
+                            <div class="error-msg-def-h text-danger">{{errorObj['ReferenceID']}}</div>
+                        </div>
+                    </div>
+                    <div class="row mt-2 mx-0">
+                        <div class="col-4">
+                            <label for="cash-detail-payment-type" class="form-label">Payment Type</label>
+                            <select class="form-select form-control" (change)="fieldChange('paymentType','text',$event)"
+                                [(ngModel)]="paymentDetailsForm.paymentType">
+                                <option value="">---select---</option>
+                                <option *ngFor="let option of paymentType" [value]="option">{{option}}</option>
+                            </select>
+                            <div class="error-msg-def-h text-danger">{{errorObj['paymentType']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="customer-payment-mode" class="form-label">Payment Mode</label>
+                            <select class="form-select form-control" (change)="fieldChange('paymentMode','text',$event)"
+                                [(ngModel)]="paymentDetailsForm.paymentMode">
+                                <option value="">---select---</option>
+                                <option value="account">Account</option>
+                                <option value="cash">Cash</option>
+                            </select>
+                            <div class="error-msg-def-h text-danger">{{errorObj['status']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="cash-detail-amount" class="form-label">Amount</label>
+                            <input type="text" class="form-control text-end" id="cash-detail-amount"
+                                [(ngModel)]="paymentDetailsForm.amount" (change)="fieldChange('amount', 'text', $event)"
+                                placeholder="₹">
+                            <div class="error-msg-def-h text-danger">{{errorObj['amount']}}</div>
+                        </div>
+
+                    </div>
+                    <div class="row mt-2 mx-0">
+                        <div class="col-4">
+                            <label for="cash-detail-date" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="cash-detail-date"
+                                [(ngModel)]="paymentDetailsForm.date" (change)="fieldChange('date', 'text', $event)"
+                                placeholder="Date">
                             <div class="error-msg-def-h text-danger">{{errorObj['date']}}</div>
                         </div>
-                    </div>
-                    <div class="row mt-3 mx-0">
                         <div class="col-4">
-                            <label for="sign-up-f-name" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="sign-up-f-name"
-                                [(ngModel)]="paymentDetailsForm.firstName"
-                                (change)="fieldChange('firstName', 'text', $event)" placeholder="First name">
-                            <div class="error-msg-def-h text-danger">{{errorObj['firstName']}}</div>
-                        </div>
-                        <div class="col-4">
-                            <label for="sign-up-l-name" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="sign-up-l-name"
-                                [(ngModel)]="paymentDetailsForm.lastName"
-                                (change)="fieldChange('lastName', 'text', $event)" placeholder="Last name">
-                            <div class="error-msg-def-h text-danger">{{errorObj['lastName']}}</div>
-                        </div>
-                        <div class="col-4">
-                            <label for="sign-up-l-name" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="sign-up-l-name"
-                                [(ngModel)]="paymentDetailsForm.lastName"
-                                (change)="fieldChange('lastName', 'text', $event)" placeholder="Last name">
-                            <div class="error-msg-def-h text-danger">{{errorObj['lastName']}}</div>
+                            <label for="cash-detail-mobileNo" class="form-label">Customer Mobile No</label>
+                            <input type="text" class="form-control" id="cash-detail-mobileNo"
+                                [(ngModel)]="paymentDetailsForm.customerMobileNo"
+                                (change)="fieldChange('customerMobileNo', 'text', $event)"
+                                placeholder="+91 XXXXX XXXXX">
+                            <div class="error-msg-def-h text-danger">{{errorObj['customerMobileNo']}}</div>
                         </div>
                     </div>
-                    <div class="row mt-3 mx-0">
-                        <div class="col-4">
-                            <label for="sign-up-f-name" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="sign-up-f-name"
-                                [(ngModel)]="paymentDetailsForm.firstName"
-                                (change)="fieldChange('firstName', 'text', $event)" placeholder="First name">
-                            <div class="error-msg-def-h text-danger">{{errorObj['firstName']}}</div>
-                        </div>
-                        <div class="col-4">
-                            <label for="sign-up-l-name" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="sign-up-l-name"
-                                [(ngModel)]="paymentDetailsForm.lastName"
-                                (change)="fieldChange('lastName', 'text', $event)" placeholder="Last name">
-                            <div class="error-msg-def-h text-danger">{{errorObj['lastName']}}</div>
-                        </div>
-                        <div class="col-4">
-                            <label for="sign-up-l-name" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="sign-up-l-name"
-                                [(ngModel)]="paymentDetailsForm.lastName"
-                                (change)="fieldChange('lastName', 'text', $event)" placeholder="Last name">
-                            <div class="error-msg-def-h text-danger">{{errorObj['lastName']}}</div>
-                        </div>
+                    <div class="d-flex justify-content-center mt-2">
+                        <button type="button" class="btn btn-outline-secondary me-3" (click)="resetForm()"
+                            style="padding: 6px 20px;">Reset</button>
+                        <button type="button" class="btn btn-outline-secondary me-3" style="padding: 6px 20px;"
+                            (click)="addInvoice()">Add</button>
+                        <button type="button" class="btn btn-outline-secondary me-3" (click)="onSubmit()"
+                            style="padding: 6px 20px;">Save</button>
+                        <button type="button" class="btn btn-outline-secondary" style="padding: 6px 20px;"
+                            (click)="print()">Print</button>
+                    </div>
+                    <table class="table table-smm table-stripedd table-hover table-flush mt-4">
+                        <thead>
+                            <tr class="header-row">
+                                <th style="width: 80px;">S.No</th>
+                                <th>Service</th>
+                                <th>Sub Service</th>
+                                <th>Reference ID</th>
+                                <th>Payment Type</th>
+                                <th>Amount</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngIf="invoiceServies.length>0; else checkLoadingTemplate">
+                                <tr *ngFor="let service of invoiceServies; let i = index">
+                                    <td class="text-center">{{ i + 1 }}.</td>
+                                    <td>{{service['service']}}</td>
+                                    <td>{{service['subService']}}</td>
+                                    <td>{{service['ReferenceID']}}</td>
+                                    <td>{{service['paymentType']}}</td>
+                                    <td>{{'₹'+service['amount']}}</td>
+                                    <td class="text-center nowrap-ellipsis" style="width: 140px;">
+                                        <i class="fa fa-edit me-3" (click)="editCashDetail(i)"
+                                            (keyup)="editCashDetail(i)"></i>
+                                        <i class="fas fa-trash pointer" (click)="trashCashDetail(i)"
+                                            (keyup)="trashCashDetail(i)"></i>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <ng-template #checkLoadingTemplate>
+                                <tr>
+                                    <td colspan="10" class="text-center skip-hover">
+                                        No records to show
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-secondary" style="padding: 6px 20px;"
+                            (click)="printAll()">Print</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </e-seva-sidenav>
+
+<div class="invoice-container" id="print-section">
+    <div class="card p-2 bg-image">
+        <div class="d-flex justify-content-between p-2">
+            <h3>INVOICE</h3>
+            <img src="./../../../../../assets/image/logo/sakthi e seva final.png" alt="e-seva-logo" width="130"
+                height="46">
+        </div>
+        <hr class="my-1" />
+        <div class="d-flex justify-content-between">
+            <div><strong>Invoice no:</strong> {{invoiceID}}</div>
+            <div><strong>Issued in:</strong> {{ invoiceDate | date: 'dd/MM/yyyy hh:mm a' }}</div>
+        </div>
+        <div class="info-section">
+            <div>
+                <h4>E-SEVA Info</h4>
+                <div>{{ shopInfo.name }}</div>
+                <div>{{ shopInfo.address }}</div>
+                <div>{{ shopInfo.email }}</div>
+                <div>{{ shopInfo.mobileNo }}</div>
+            </div>
+
+            <div>
+                <h4>Customer Info</h4>
+                <div>{{ customerInfo.name }}</div>
+                <div>{{ customerInfo.mobileNo }}</div>
+            </div>
+
+        </div>
+
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>Item Description</th>
+                    <th>Reference ID</th>
+                    <th>Qty</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of invoiceServies">
+                    <td>{{ item.service}}</td>
+                    <td>{{item.ReferenceID}}</td>
+                    <td>1</td>
+                    <td>₹{{ item.amount }}</td>
+                    <td>₹{{ item.amount }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="total-section">
+            <strong>Total Amount: ₹{{ invoiceTotal }}</strong>
+        </div>
+
+        <div class="footer">
+            <p class="mb-0">
+                தங்கள் வருகைக்கு நன்றி. எங்களது சேவை உங்களுக்கு திருப்திகரமாக இருந்தால் மேலும் ஒருவருக்காவது
+                பகிர்ந்து சொல்லுங்கள்.
+            </p>
+        </div>
+    </div>
+</div>

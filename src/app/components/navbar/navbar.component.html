@@ -4,9 +4,14 @@
     </div>
     <div>
         <ul class="list-unstyled d-flex gap-5 mt-2 mb-0 me-2" style="font-size: 1.1rem;">
+            <li class="pointer position-relative pt-1" (click)="navigation('administration/cash-management/add')" (keyup)="navigation('administration/cash-management/add')">
+                <i class="fa fa-indian-rupee-sign"></i> Add
+            </li>
             <li class="pointer position-relative pt-1">
-                <i class="far fa-bell"></i>
-                <span class="badge notification-badge">3</span>
+                <i class="fa fa-tools"></i> Add
+            </li>
+            <li class="pointer position-relative pt-1" (click)="navigation('administration/customer-management/add')" (keyup)="navigation('administration/customer-management/add')">
+                <i class="fa fa-users"></i> Add
             </li>
             <li class="pointer" style="line-height: normal;">
                 <div class="dropdown">

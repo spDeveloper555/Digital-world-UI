@@ -97,3 +97,9 @@ body {
 .table-font-size-14px td {
   font-size: 14px;
 }
+
+.nowrap-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

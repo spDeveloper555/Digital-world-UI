@@ -32,4 +32,33 @@ export class UserManagementComponent implements OnInit {
       console.log(error)
     });
   }
+    public deleteUserID: any = '';
+  trashUserDetail(userDataID: any) {
+    this.showConfirm = true;
+    this.deleteUserID = userDataID;
+  }
+  editUserDetail(userDataID: any) {
+    let path = 'administration/User-management/edit/' + userDataID;
+    this.router.navigate([path]);
+  }
+  viewUserDetail(userDataID: any) {
+    let path = 'administration/User-management/list/' + userDataID;
+    this.router.navigate([path]);
+  }
+  showConfirm = false;
+
+  handleConfirm(result: boolean) {
+    this.showConfirm = false;
+    if (result) {
+      // this.api.UserDetailsDelete({ UserDataID: +this.deleteUserID })?.then((res: any) => {
+      //   if (res['status'] == 'success') {
+      //     this.isLoading = true;
+      //     this.getUserList();
+      //   }
+      // }).catch((error: any) => {
+      //   console.log(error)
+      // });
+    }
+    this.deleteUserID = '';
+  }
 }

@@ -1,0 +1,57 @@
+<div class="invoice">
+  <div class="header">
+    <img src="./../../../assets/image/logo/sakthi e seva final.png" alt="Logo" class="logo" />
+    <h1>BORCELLE <span>INVOICE</span></h1>
+    <p class="sub">Sakthi E-SEVA</p>
+  </div>
+
+  <div class="info">
+    <div>
+      <strong>BILLED TO:</strong><br />
+      {{ invoice.billedTo.name }}<br />
+      {{ invoice.billedTo.phone }}<br />
+      {{ invoice.billedTo.email }}<br />
+      {{ invoice.billedTo.address }}
+    </div>
+    <div>
+      <strong>DATE</strong><br />
+      {{ invoice.date }}<br /><br />
+      <strong>INVOICE NUMBER</strong><br />
+      {{ invoice.number }}
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of invoice.items">
+        <td>{{ item.name }}</td>
+        <td>${{ item.price }}</td>
+        <td>{{ item.qty }}</td>
+        <td>${{ item.price * item.qty }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="summary">
+    <div>Subtotal: ${{ subtotal }}</div>
+    <div>Tax (0%): $0</div>
+    <div><strong>Total: ${{ total }}</strong></div>
+  </div>
+
+  <div class="footer">
+    <div class="thanks">Thank you!</div>
+    <div class="payment">
+      <strong>PAYMENT INFORMATION</strong><br />
+      Bank Name: {{ invoice.bank.name }}<br />
+      Bank Account: {{ invoice.bank.account }}
+    </div>
+  </div>
+</div>

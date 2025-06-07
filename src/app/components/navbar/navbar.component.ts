@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 @Component({
   selector: 'e-seva-navbar',
@@ -7,15 +8,7 @@ import { AuthService } from '../../core/services/auth.service';
 })
 export class NavbarComponent {
   @Input() public isSideNavOpened = false;
-  constructor(public authService: AuthService) { }
-  isCollapsed = true;
-  activePage: any = {
-    "icon": "fa fa-tools",
-    "name": "Service management",
-    "url": "service-management"
-  };
-  public profileName = "SP";
-  public moduleName: string = "dashboard";
+  constructor(public authService: AuthService, public router: Router) { }
   @Input() menuList: any = [{
     name:"Administration",
     url:"/admin"
@@ -23,9 +16,7 @@ export class NavbarComponent {
   logout() {
     this.authService.logout();
   }
-  changeModule(module: string) {
-    this.moduleName = module;
-  }
   navigation(path: string) {
+    this.router.navigate([path]);
   }
 }

@@ -28,7 +28,16 @@
                                     <td>{{user['firstName'] + " " + user['lastName']}}</td>
                                     <td>{{user['email']}}</td>
                                     <td>{{(user?.['address'])?user['address']:'-'}}</td>
-                                    <td></td>
+                                    <td class="text-center nowrap-ellipsis" style="width: 140px;">
+                                        <i class="fas fa-eye me-3 pointer"
+                                            (click)="viewUserDetail(user['UserDataID'])"
+                                            (keyup)="viewUserDetail(user['UserDataID'])"></i>
+                                        <i class="fas fa-edit me-3 pointer"
+                                            (click)="editUserDetail(user['UserDataID'])"
+                                            (keyup)="editUserDetail(user['UserDataID'])"></i>
+                                        <i class="fas fa-trash pointer" (click)="trashUserDetail(user['UserDataID'])"
+                                            (keyup)="trashUserDetail(user['UserDataID'])"></i>
+                                    </td>
                                 </tr>
                             </ng-container>
                             <ng-template #checkLoadingTemplate>

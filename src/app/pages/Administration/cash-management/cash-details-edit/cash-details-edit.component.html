@@ -1,0 +1,106 @@
+<e-seva-sidenav [activePage]="'Invoice'">
+    <div routerPage>
+        <div class="row align-items-center mb-3">
+            <div class="col-12 col-md-4">
+                <h4 class="text-muted mb-3 mb-md-0">Invoice edit</h4>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="d-flex flex-column flex-md-row justify-content-md-end">
+                    <button type="button" class="btn btn-outline-secondary ms-md-3"
+                        (click)="navigation('administration/cash-management')">
+                        <i class="fas fa-arrow-left"></i> Go back
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card p-2 bg-white mt-2 table-responsive custom-scrollbar" style="height: 73vh;">
+                    <div class="row mt-2 mx-0">
+                        <div class="col-4">
+                            <label for="cash-detail-service" class="form-label">Service</label>
+                            <div class="dropdown">
+                                <input type="text" class="form-control" placeholder="Search service..."
+                                    [(ngModel)]="paymentDetailsForm.service" (focus)="dropdownOpen = true"
+                                    (blur)="closeDropdownWithDelay()" />
+
+                                <ul class="dropdown-menu show w-100" *ngIf="dropdownOpen"
+                                    style="max-height: 200px; overflow-y: auto; position: absolute; z-index: 1000;">
+                                    <ng-container *ngIf="filteredServices().length; else noResult">
+                                        <li *ngFor="let option of filteredServices()"
+                                            (mousedown)="selectService(option)">
+                                            <a class="dropdown-item" href="#">{{ option }}</a>
+                                        </li>
+                                    </ng-container>
+
+                                    <ng-template #noResult>
+                                        <li class="dropdown-item text-muted">No options found</li>
+                                    </ng-template>
+                                </ul>
+                            </div>
+                            <div class="error-msg-def-h text-danger">{{errorObj['service']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="cash-detail-customer-id" class="form-label">Sub Service</label>
+                            <input type="text" class="form-control" id="cash-detail-customer-id"
+                                [(ngModel)]="paymentDetailsForm.subService"
+                                (change)="fieldChange('subService', 'text', $event)"
+                                placeholder="Customer ID">
+                            <div class="error-msg-def-h text-danger">{{errorObj['subService']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="cash-detail-customer-id" class="form-label">Reference ID</label>
+                            <input type="text" class="form-control" id="cash-detail-customer-id"
+                                [(ngModel)]="paymentDetailsForm.ReferenceID"
+                                (change)="fieldChange('ReferenceID', 'text', $event)"
+                                placeholder="Reference ID">
+                            <div class="error-msg-def-h text-danger">{{errorObj['ReferenceID']}}</div>
+                        </div>
+                    </div>
+                    <div class="row mt-2 mx-0">
+                        <div class="col-4">
+                            <label for="cash-detail-payment-type" class="form-label">Payment Type</label>
+                            <select class="form-select form-control" (change)="fieldChange('paymentType','text',$event)"
+                                [(ngModel)]="paymentDetailsForm.paymentType">
+                                <option value="">---select---</option>
+                                <option *ngFor="let option of paymentType" [value]="option">{{option}}</option>
+                            </select>
+                            <div class="error-msg-def-h text-danger">{{errorObj['paymentType']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="cash-detail-amount" class="form-label">Amount</label>
+                            <input type="text" class="form-control text-end" id="cash-detail-amount"
+                                [(ngModel)]="paymentDetailsForm.amount" (change)="fieldChange('amount', 'text', $event)"
+                                placeholder="₹">
+                            <div class="error-msg-def-h text-danger">{{errorObj['amount']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="cash-detail-date" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="cash-detail-date"
+                                [(ngModel)]="paymentDetailsForm.date" (change)="fieldChange('date', 'text', $event)"
+                                placeholder="Date">
+                            <div class="error-msg-def-h text-danger">{{errorObj['date']}}</div>
+                        </div>
+                    </div>
+                    <div class="row mt-2 mx-0">
+                        <div class="col-4">
+                            <label for="cash-detail-customer-id" class="form-label">Customer ID</label>
+                            <input type="text" class="form-control" id="cash-detail-customer-id"
+                                [(ngModel)]="paymentDetailsForm.customerID"
+                                (change)="fieldChange('customerID', 'text', $event)"
+                                placeholder="Customer ID">
+                            <div class="error-msg-def-h text-danger">{{errorObj['customerID']}}</div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-secondary"
+                            (click)="navigation('administration/cash-management')">Cancel</button>
+                        <button type="button" class="btn btn-outline-success ms-3" (click)="onSubmit()"
+                            style="padding: 0px 20px;">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</e-seva-sidenav>

@@ -46,9 +46,7 @@ export class RegisterComponent {
       return;
     }
     this.errorMessage = '';
-    console.log(obj)
     this.api.register(obj)?.then((res: any) => {
-      console.log(res)
       if (res['status'] == 'success') {
         this.router.navigate(['login']);
       } else {

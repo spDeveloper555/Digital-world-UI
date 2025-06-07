@@ -1,0 +1,23 @@
+<div class="modal-backdrop show"></div>
+<div class="modal show d-block" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="d-flex justify-content-between">
+                    <h5 class="modal-title">{{ title }}</h5>
+                    <div (click)="cancel()" (keyup)="cancel()">
+                        <i class="fa fa-times pointer" style="font-size: 20px;"></i>
+                    </div>
+                </div>
+                <div class="py-3">
+                    <p>{{ message }}</p>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-secondary me-3" (click)="cancel()">{{ cancelButtonText
+                        }}</button>
+                    <button type="button" class="btn btn-danger" (click)="confirm()">{{ confirmButtonText }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

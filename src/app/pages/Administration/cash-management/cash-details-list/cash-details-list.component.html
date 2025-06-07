@@ -1,1 +1,35 @@
-<p>cash-details-list works!</p>
+<e-seva-sidenav [activePage]="'Invoice'">
+    <div routerPage>
+        <div class="row align-items-center mb-3">
+            <div class="col-12 col-md-4">
+                <h4 class="text-muted mb-3 mb-md-0">Invoice view</h4>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="d-flex flex-column flex-md-row justify-content-md-end">
+                    <button type="button" class="btn btn-outline-secondary ms-md-3"
+                        (click)="navigation('administration/cash-management')">
+                        <i class="fas fa-arrow-left"></i> Go back
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <!-- <div class="card p-2 bg-white mt-2" style="height: 73vh;"> -->
+                    <div class="invoice-container">
+                        <ul class="invoice-list">
+                            <li><strong>Service:</strong> {{ invoice.service }}</li>
+                            <li><strong>Invoice No:</strong>{{invoice.paymentID}}</li>
+                            <li><strong>Date:</strong> {{ invoice.date }}</li>
+                            <li><strong>Payment Type:</strong> {{ invoice.paymentType }}</li>
+                            <!-- <li *ngIf="invoice?.customerID"><strong>Borrower Details:</strong> {{ invoice.customerID }}</li> -->
+                            <li><strong>Processed By:</strong> {{ invoice.processOperator }}</li>
+                            <li><strong>Amount:</strong> {{ '₹'+invoice.amount+'.00' }}</li>
+                        </ul>
+                    </div>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</e-seva-sidenav>

@@ -30,7 +30,7 @@
           <div class="password-container">
             <input [type]="pwdType" class="form-control" id="sign-up-password" [(ngModel)]="registerForm.password"
               (change)="fieldChange('password', 'text', $event)" placeholder="Password">
-            <i class="bi toggle-password" [ngClass]="{'bi-eye-slash':showPwdPreview, 'bi-eye':!showPwdPreview}"
+            <i class="fa toggle-password" [ngClass]="{'fa-eye-slash':showPwdPreview, 'fa-eye':!showPwdPreview}"
               (click)="togglePreview()" (keyup)="togglePreview()"></i>
           </div>
           <div class="error-msg-def-h text-danger">{{errorObj['password']}}</div>

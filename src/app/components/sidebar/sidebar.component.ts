@@ -8,19 +8,27 @@ import { AppService } from '../../services/app.service';
 })
 export class SidebarComponent implements OnInit {
   public navItems: any = [
+    // {
+    //   icon: "fa fa-tv",
+    //   name: "Dashboard",
+    //   url: "/administration/dashboard"
+    // }, 
     {
-      icon: "fa fa-tv",
-      name: "Dashboard",
-      url: "/administration/dashboard"
-    }, {
+      icon: "fa fa-indian-rupee-sign",
+      name: "Invoice",
+      url: "/administration/cash-management"
+    },
+    {
       icon: "fa fa-tools",
       name: "Service management",
       url: "/administration/service-management"
-    }, {
-      icon: "fa fa-indian-rupee-sign",
-      name: "Cash management",
-      url: "/administration/cash-management"
-    }, {
+    }, 
+    {
+      icon: "fa fa-users",
+      name: "Customer management",
+      url: "/administration/customer-management"
+    }, 
+    {
       icon: "fa fa-user",
       name: "User management",
       url: "/administration/user-management"

@@ -1,0 +1,103 @@
+<e-seva-sidenav [activePage]="'Customer management'">
+    <div routerPage>
+        <div class="row align-items-center mb-3">
+            <div class="col-12 col-md-4">
+                <h4 class="text-muted mb-3 mb-md-0">Customer details add</h4>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="d-flex flex-column flex-md-row justify-content-md-end">
+                    <button type="button" class="btn btn-outline-secondary ms-md-3"
+                        (click)="navigation('administration/customer-management')">
+                        <i class="fas fa-arrow-left"></i> Go back
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card p-2 bg-white mt-2 table-responsive custom-scrollbar" style="height: 73vh;">
+                    <div class="row mt-2 mx-0">
+                        <div class="col-4">
+                            <label for="customer-detail-name" class="form-label">Customer Name</label>
+                            <input type="text" class="form-control" id="customer-name"
+                                [(ngModel)]="paymentDetailsForm.name" (change)="fieldChange('name', 'text', $event)"
+                                placeholder="Customer name">
+                            <div class="error-msg-def-h text-danger">{{errorObj['name']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="customer-detail-fatherName" class="form-label">Father Name</label>
+                            <input type="text" class="form-control" id="customer-fatherName"
+                                [(ngModel)]="paymentDetailsForm.fatherName"
+                                (change)="fieldChange('fatherName', 'text', $event)" placeholder="Father name">
+                            <div class="error-msg-def-h text-danger">{{errorObj['fatherName']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="customer-email" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="customer-email"
+                                [(ngModel)]="paymentDetailsForm.email" (change)="fieldChange('email', 'text', $event)"
+                                placeholder="Customer email">
+                            <div class="error-msg-def-h text-danger">{{errorObj['email']}}</div>
+                        </div>
+                    </div>
+                    <div class="row mt-2 mx-0">
+                        <div class="col-4">
+                            <label for="customer-address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="customer-address"
+                                [(ngModel)]="paymentDetailsForm.address"
+                                (change)="fieldChange('address', 'text', $event)" placeholder="Address">
+                            <div class="error-msg-def-h text-danger">{{errorObj['address']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="customer-city" class="form-label">City</label>
+                            <input type="text" class="form-control" id="customer-city"
+                                [(ngModel)]="paymentDetailsForm.city" (change)="fieldChange('city', 'text', $event)"
+                                placeholder="City">
+                            <div class="error-msg-def-h text-danger">{{errorObj['city']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="customer-state" class="form-label">State</label>
+                            <input type="text" class="form-control" id="customer-state"
+                                [(ngModel)]="paymentDetailsForm.state" (change)="fieldChange('state', 'text', $event)"
+                                placeholder="State">
+                            <div class="error-msg-def-h text-danger">{{errorObj['state']}}</div>
+                        </div>
+                    </div>
+                    <div class="row mt-2 mx-0">
+                        <div class="col-4">
+                            <label for="customer-pincode" class="form-label">Pincode</label>
+                            <input type="text" class="form-control" id="customer-pincode"
+                                [(ngModel)]="paymentDetailsForm.pincode"
+                                (change)="fieldChange('pincode', 'text', $event)" placeholder="Pincode">
+                            <div class="error-msg-def-h text-danger">{{errorObj['pincode']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="customer-mobile-no" class="form-label">Mobile No</label>
+                            <input type="text" class="form-control" id="customer-mobile-no"
+                                [(ngModel)]="paymentDetailsForm.mobileNo"
+                                (change)="fieldChange('mobileNo', 'text', $event)" placeholder="Mobile No">
+                            <div class="error-msg-def-h text-danger">{{errorObj['mobileNo']}}</div>
+                        </div>
+                        <div class="col-4">
+                            <label for="customer-sms-type" class="form-label">SMS Type</label>
+                            <select class="form-select form-control" (change)="fieldChange('smsType','text',$event)"
+                                [(ngModel)]="paymentDetailsForm.smsType">
+                                <option value="">---select---</option>
+                                <option value="whats_app">Whats App</option>
+                                <option value="sms">Message</option>
+                                <option value="email">Email</option>
+                            </select>
+                            <div class="error-msg-def-h text-danger">{{errorObj['smsType']}}</div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-secondary"
+                            (click)="navigation('administration/customer-management')">Cancel</button>
+                        <button type="button" class="btn btn-outline-success ms-3" (click)="onSubmit()"
+                            style="padding: 0px 20px;">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</e-seva-sidenav>

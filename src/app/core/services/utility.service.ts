@@ -40,4 +40,32 @@ export class UtilityService {
         const emailReg = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/g
         return emailReg.test(value);
     }
+    get_location_data(obj: any) {
+        let keys = ['address', 'city', 'state', 'pincode'];
+        let location = [];
+        for (let key of keys) {
+            if (obj?.[key] && obj[key] != '') {
+                let value = this.strCaps(obj[key], false);
+                if (key == 'address_1' && value && value.charAt(value.length - 1) == ',') {
+                    value = value.substring(0, value.length - 1);
+                }
+                location.push(value);
+            }
+        }
+        return location.join(', ');
+    }
+    strCaps(value: string, lowercase: boolean = true): string {
+        value = String(value).trim();
+        if (value && value != '') {
+            let remainStr = String(value).slice(1);
+            if (lowercase) remainStr = String(remainStr).toLowerCase()
+            return String(value).charAt(0).toUpperCase() + remainStr;
+        }
+        return value;
+    }
+    is_consist_more_data(res: any, limit: number = 20, key: any = 'data') {
+        let data_len: any = res?.[key]?.['length'] ?? 0;
+        if (data_len == limit) return true;
+        else return false;
+    }
 }
