@@ -207,6 +207,13 @@
                     <td>₹{{ item.amount }}</td>
                     <td>₹{{ item.amount }}</td>
                 </tr>
+                <tr *ngFor="let item of tableLength | num_sequence">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
             </tbody>
         </table>
 

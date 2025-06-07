@@ -123,6 +123,7 @@ export class CashDetailsAddComponent implements OnInit {
     this.invoiceTotal = this.invoiceServies.reduce((total: any, item: any) => {
       return total + Number(item.amount);
     }, 0);
+    this.tableLength = 6 - this.invoiceServies.length;
     this.submitInvoice();
     setTimeout(() => {
       const printContent = document.getElementById('print-section');
@@ -215,11 +216,13 @@ export class CashDetailsAddComponent implements OnInit {
     }, 100);
   }
   public invoiceTotal: number = 0;
+  public tableLength: any = 6;
   printAll() {
     if (this.invoiceServies.length > 0) {
       this.invoiceTotal = this.invoiceServies.reduce((total: any, item: any) => {
         return total + Number(item.amount);
       }, 0);
+      this.tableLength = 6 - this.invoiceServies.length;
       this.submitInvoice();
       setTimeout(() => {
         const printContent = document.getElementById('print-section');
