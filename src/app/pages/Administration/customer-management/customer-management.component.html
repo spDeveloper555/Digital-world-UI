@@ -36,7 +36,7 @@
                             <ng-container *ngIf="!isLoading && customerServies.length>0; else checkLoadingTemplate">
                                 <tr *ngFor="let service of customerServies; let i = index">
                                     <td class="text-center">{{ i + 1 }}.</td>
-                                    <td>{{service['customerID']}}</td>
+                                    <td>{{service['mobileNo']}}</td>
                                     <td>{{service['name']}}</td>
                                     <td>{{(service?.['fatherName'])?service['fatherName']:'-'}}</td>
                                     <td>{{(service?.['email'])?service['email']:'-'}}</td>
