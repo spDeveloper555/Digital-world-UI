@@ -94,6 +94,13 @@
                             <div class="error-msg-def-h text-danger">{{errorObj['date']}}</div>
                         </div>
                         <div class="col-4">
+                            <label for="cash-detail-name" class="form-label">Customer name</label>
+                            <input type="text" class="form-control" id="cash-detail-name"
+                                [(ngModel)]="paymentDetailsForm.customerName"
+                                (change)="fieldChange('customerName', 'text', $event)" placeholder="Customer name">
+                            <div class="error-msg-def-h text-danger">{{errorObj['customerName']}}</div>
+                        </div>
+                        <div class="col-4">
                             <label for="cash-detail-mobileNo" class="form-label">Customer Mobile No</label>
                             <input type="text" class="form-control" id="cash-detail-mobileNo"
                                 [(ngModel)]="paymentDetailsForm.customerMobileNo"

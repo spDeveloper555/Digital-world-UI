@@ -18,6 +18,7 @@ export class CashDetailsAddComponent implements OnInit {
     paymentMode: '',
     amount: '',
     processOperator: '',
+    customerName: '',
     customerMobileNo: ''
   }
   public errorObj: any = {
@@ -29,6 +30,7 @@ export class CashDetailsAddComponent implements OnInit {
     paymentMode: '',
     amount: '',
     processOperator: '',
+    customerName: '',
     customerMobileNo: ''
   }
   public services_obj: any = current_services;
@@ -109,8 +111,11 @@ export class CashDetailsAddComponent implements OnInit {
       this.errorObj = formValidation['message'];
       return;
     }
+    let userDetails: any = localStorage.getItem('userDetails');
+    if (userDetails) userDetails = JSON.parse(userDetails);
+    obj['processOperator'] = userDetails['firstName'] + " " + userDetails['lastName'];
     this.invoiceServies.push(obj)
-    this.resetForm(this.paymentDetailsForm['customerMobileNo']);
+    this.resetForm(this.paymentDetailsForm['customerMobileNo'], this.paymentDetailsForm['customerName']);
   }
   print() {
     const obj = this.paymentDetailsForm;
@@ -119,6 +124,9 @@ export class CashDetailsAddComponent implements OnInit {
       this.errorObj = formValidation['message'];
       return;
     }
+    let userDetails: any = localStorage.getItem('userDetails');
+    if (userDetails) userDetails = JSON.parse(userDetails);
+    obj['processOperator'] = userDetails['firstName'] + " " + userDetails['lastName'];
     this.invoiceServies.push(obj)
     this.invoiceTotal = this.invoiceServies.reduce((total: any, item: any) => {
       return total + Number(item.amount);
@@ -326,7 +334,7 @@ export class CashDetailsAddComponent implements OnInit {
     }
     return res;
   }
-  resetForm(mobileNo = '') {
+  resetForm(mobileNo = '', name = '') {
     this.paymentDetailsForm = {
       service: '',
       subService: '',
@@ -336,6 +344,7 @@ export class CashDetailsAddComponent implements OnInit {
       amount: '',
       date: this.paymentDetailsForm['date'],
       processOperator: '',
+      customerName: name,
       customerMobileNo: mobileNo
     };
     this.errorObj = {
