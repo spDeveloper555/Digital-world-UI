@@ -167,9 +167,15 @@ export class CashDetailsAddComponent implements OnInit {
                 margin-top: 5px;
               }
 
-              .invoice-table th,
-              .invoice-table td {
+              .invoice-table th {
                 border: 1px solid #ccc;
+                padding: 5px;
+                text-align: left;
+              }
+              .invoice-table td {
+                border-right: 1px solid #ccc;
+                border-left: 1px solid #ccc;
+                border-bottom: 1px dotted #ccc;
                 padding: 5px;
                 text-align: left;
               }
@@ -242,10 +248,6 @@ export class CashDetailsAddComponent implements OnInit {
           rel="stylesheet"/>
             <style>
             @media print {
-                  body {
-                    transform: scale(0.94);
-                  }
-
                   html, body {
                     width: 100%;
                     height: 100%;
@@ -280,9 +282,15 @@ export class CashDetailsAddComponent implements OnInit {
                 margin-top: 5px;
               }
 
-              .invoice-table th,
-              .invoice-table td {
+              .invoice-table th {
                 border: 1px solid #ccc;
+                padding: 5px;
+                text-align: left;
+              }
+              .invoice-table td {
+                border-right: 1px solid #ccc;
+                border-left: 1px solid #ccc;
+                border-bottom: 1px dotted #ccc;
                 padding: 5px;
                 text-align: left;
               }
