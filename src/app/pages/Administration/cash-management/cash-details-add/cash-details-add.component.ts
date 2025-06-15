@@ -87,23 +87,6 @@ export class CashDetailsAddComponent implements OnInit {
       this.paymentDetailsForm['amount'] = this.services_obj[this.paymentDetailsForm['service']]
     } else if (field == 'paymentType') this.paymentDetailsForm['amount'] = '';
   }
-  dropdownOpen = false;
-  filteredServices() {
-    const search = this.paymentDetailsForm.service.toLowerCase();
-    return this.services.filter((option: any) =>
-      option.toLowerCase().includes(search)
-    );
-  }
-
-  selectService(option: string) {
-    this.paymentDetailsForm.service = option;
-    this.dropdownOpen = false;
-    this.fieldChange('service', 'text', { target: { value: option } });
-  }
-
-  closeDropdownWithDelay() {
-    setTimeout(() => this.dropdownOpen = false, 200);
-  }
   addInvoice() {
     const obj = this.paymentDetailsForm;
     let formValidation = this.utility.formValidation(obj, ['service', 'subService', 'ReferenceID', 'paymentType', 'date', 'amount', 'customerMobileNo']);
@@ -145,6 +128,19 @@ export class CashDetailsAddComponent implements OnInit {
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
           rel="stylesheet"/>
             <style>
+            @media print {
+                  body {
+                    transform: scale(0.94);
+                  }
+
+                  html, body {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                    overflow: hidden;
+                  }
+                }
               .invoice-container {
                 max-width: 800px;
                 margin: auto;
@@ -221,6 +217,7 @@ export class CashDetailsAddComponent implements OnInit {
       `);
         WindowPrt.document.close();
       }
+      this.resetAll();
     }, 100);
   }
   public invoiceTotal: number = 0;
@@ -244,6 +241,19 @@ export class CashDetailsAddComponent implements OnInit {
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
           rel="stylesheet"/>
             <style>
+            @media print {
+                  body {
+                    transform: scale(0.94);
+                  }
+
+                  html, body {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                    overflow: hidden;
+                  }
+                }
               .invoice-container {
                 max-width: 800px;
                 margin: auto;
@@ -322,6 +332,7 @@ export class CashDetailsAddComponent implements OnInit {
       `);
           WindowPrt.document.close();
         }
+        this.resetAll();
       }, 100);
     }
   }
@@ -384,5 +395,8 @@ export class CashDetailsAddComponent implements OnInit {
     }).catch((error: any) => {
       console.log(error)
     });
+  }
+  resetAll() {
+    this.navigation('administration/cash-management')
   }
 }
