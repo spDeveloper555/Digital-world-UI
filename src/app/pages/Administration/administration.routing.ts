@@ -7,11 +7,13 @@ import { UserManagementComponent } from "./user-management/user-management.compo
 import { CashRouting } from "./cash-management/cash.routing";
 import { CustomerManagementComponent } from "./customer-management/customer-management.component";
 import { CustomerRouting } from "./customer-management/customer.routing";
+import { ServiceRouting } from "./service-management/directives/service.routing";
 
 export const AdministrationRouting: Route[] = [
     { path: '', redirectTo: 'list', pathMatch: 'full' },
     { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
     { path: 'service-management', component: ServiceManagementComponent, canActivate: [authGuard] },
+    { path: 'service-management', children: ServiceRouting, canActivate: [authGuard] },
     { path: 'cash-management', component: CashManagementComponent, canActivate: [authGuard] },
     { path: 'user-management', component: UserManagementComponent, canActivate: [authGuard] },
     { path: 'cash-management', children: CashRouting, canActivate: [authGuard] },

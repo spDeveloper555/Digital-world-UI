@@ -56,9 +56,14 @@
                         </div>
                         <div class="col-4">
                             <label for="cash-detail-sub-service" class="form-label">Sub Service</label>
-                            <input type="text" class="form-control" id="cash-detail-sub-service"
+                            <!-- <input type="text" class="form-control" id="cash-detail-sub-service"
                                 [(ngModel)]="paymentDetailsForm.subService"
-                                (change)="fieldChange('subService', 'text', $event)" placeholder="Sub Service">
+                                (change)="fieldChange('subService', 'text', $event)" placeholder="Sub Service"> -->
+                            <select class="form-select form-control" (change)="fieldChange('subService','text',$event)"
+                                [(ngModel)]="paymentDetailsForm.subService">
+                                <option value="">---select---</option>
+                                <option *ngFor="let option of subServices" [value]="option">{{option}}</option>
+                            </select>
                             <div class="error-msg-def-h text-danger">{{errorObj['subService']}}</div>
                         </div>
                     </div>
@@ -185,16 +190,16 @@
         </div>
         <div class="info-section">
             <div>
-                <h4>E-Seva Info</h4>
-                <div>{{ shopInfo.name }}</div>
+                <h5>E-Seva Info</h5>
+                <div><strong>{{ shopInfo.name }}</strong></div>
                 <div>{{ shopInfo.address }}</div>
                 <div>{{ shopInfo.email }}</div>
                 <div>{{ shopInfo.mobileNo }}</div>
             </div>
 
             <div>
-                <h4>Customer Info</h4>
-                <div>{{ customerInfo.name }}</div>
+                <h5>Customer Info</h5>
+                <div><strong>{{ customerInfo.name }}</strong></div>
                 <div>{{ customerInfo.mobileNo }}</div>
             </div>
 
@@ -203,18 +208,18 @@
         <table class="invoice-table">
             <thead>
                 <tr>
-                    <th>Item Description</th>
-                    <th>Reference ID</th>
-                    <th>Qty</th>
-                    <th>Unit Price</th>
-                    <th>Total Price</th>
+                    <th class="text-center">Item Description</th>
+                    <th class="text-center">Reference ID</th>
+                    <th class="text-center">Qty</th>
+                    <th class="text-center">Unit Price</th>
+                    <th class="text-center">Total Price</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of invoiceServies">
                     <td>{{ item.service}}</td>
                     <td>{{item.ReferenceID}}</td>
-                    <td>1</td>
+                    <td class="text-center">1</td>
                     <td class="text-end">₹{{ item.amount }}</td>
                     <td class="text-end">₹{{ item.amount }}</td>
                 </tr>
@@ -232,7 +237,11 @@
             <strong>Total Amount: ₹{{ invoiceTotal }}</strong>
         </div>
 
-        <div class="footer" style="position: absolute;bottom: 0;">
+        <div class="signature-section me-2">
+            {{ invoiceServies?.[0]?.['processOperator'] ?? "" }}
+        </div>
+
+        <div class="footer">
             <p class="mb-0">
                 தங்கள் வருகைக்கு நன்றி. எங்களது சேவை உங்களுக்கு திருப்திகரமாக இருந்தால் மேலும் ஒருவருக்காவது
                 பகிர்ந்து சொல்லுங்கள்.

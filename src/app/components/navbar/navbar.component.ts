@@ -10,13 +10,14 @@ export class NavbarComponent {
   @Input() public isSideNavOpened = false;
   constructor(public authService: AuthService, public router: Router) { }
   @Input() menuList: any = [{
-    name:"Administration",
-    url:"/admin"
+    name:"Add more services",
+    path:"administration/service-management/manage",
   }];
   logout() {
     this.authService.logout();
   }
   navigation(path: string) {
+    console.log('Navigating to:', path);
     this.router.navigate([path]);
   }
 }

@@ -41,6 +41,12 @@ export class ApiService {
   customerDetailsDelete(data: any) {
     return this.post('administration/customer_detail/delete', data)
   }
+  getManageService(data: any) {
+    return this.post('administration/manage_service/list', data)
+  }
+  updateManageService(data: any) {
+    return this.post('administration/manage_service/update', data)
+  }
   userList(data: any) {
     return this.post('user/list', data)
   }

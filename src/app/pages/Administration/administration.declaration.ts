@@ -5,6 +5,7 @@ import { UserManagementComponent } from "./user-management/user-management.compo
 import { CashDeclaration } from "./cash-management/cash.declaration";
 import { CustomerManagementComponent } from "./customer-management/customer-management.component";
 import { CustomerDeclaration } from "./customer-management/customer.declaration"
+import { ServiceDeclaration } from "./service-management/directives/service.declaration";
 export const AdministrationDeclaration = [
     DashboardComponent,
     ServiceManagementComponent,
@@ -12,5 +13,6 @@ export const AdministrationDeclaration = [
     UserManagementComponent,
     CustomerManagementComponent,
     CashDeclaration,
-    CustomerDeclaration
+    CustomerDeclaration,
+    ServiceDeclaration
 ];

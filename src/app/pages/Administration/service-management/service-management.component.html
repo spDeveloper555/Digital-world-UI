@@ -4,8 +4,16 @@
             <div>
                 <h4 class="text-muted mb-3">Service management</h4>
             </div>
-            <div style="width: 30%">
-                <input type="search" class="form-control" placeholder="Search..." autocomplete="off"/>
+            <div class="col-12 col-md-8">
+                <div class="d-flex flex-column flex-md-row justify-content-md-end">
+                    <input type="search" style="width: 48%;" #searchInput (change)="onSearchChange(searchInput.value)"
+                        (input)="onSearchChange(searchInput.value)" (keyup)="onSearchChange(searchInput.value)"
+                        class="form-control mb-2 mb-md-0" placeholder="Search..." autocomplete="off" />
+                    <button type="button" class="btn btn-outline-secondary ms-md-3"
+                        (click)="navigation('administration/cash-management/add')">
+                        <i class="fas fa-plus me-1"></i> Add
+                    </button>
+                </div>
             </div>
         </div>
         <div class="row mb-4">

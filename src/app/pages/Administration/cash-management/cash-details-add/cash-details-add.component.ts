@@ -33,10 +33,11 @@ export class CashDetailsAddComponent implements OnInit {
     customerName: '',
     customerMobileNo: ''
   }
-  public services_obj: any = current_services;
+  public services_obj: any = {};
   public services: any = Object.keys(this.services_obj);
+  public subServices: any = [];
   public shopInfo = {
-    name: 'Shakthi E-Seva',
+    name: 'Sakthi E-Seva',
     address: 'Melur, Kallakurichi - 606201',
     mobileNo: '63793 05484',
     email: 'sakthieseva.csc@gmail.com'
@@ -65,7 +66,16 @@ export class CashDetailsAddComponent implements OnInit {
   constructor(public router: Router, public api: ApiService, public utility: UtilityService,) { }
 
   ngOnInit(): void {
+    this.getServices();
     this.onPatchData();
+  }
+  async getServices() {
+    let res: any = await this.api.getManageService({})?.catch((error: any) => { console.log(error) });
+    if (res['status'] == 'success') {
+      this.services_obj = res['services'] ?? { };
+      this.services = Object.keys(this.services_obj);
+      this.subServices = res['subServices'] ?? [];
+    }
   }
   onPatchData() {
     if (this.paymentDetailsForm?.['date'] == '') {
@@ -114,7 +124,7 @@ export class CashDetailsAddComponent implements OnInit {
     this.invoiceTotal = this.invoiceServies.reduce((total: any, item: any) => {
       return total + Number(item.amount);
     }, 0);
-    this.tableLength = 6 - this.invoiceServies.length;
+    this.tableLength = 8 - this.invoiceServies.length;
     this.submitInvoice();
     setTimeout(() => {
       const printContent = document.getElementById('print-section');
@@ -190,6 +200,11 @@ export class CashDetailsAddComponent implements OnInit {
                 font-size: 18px;
                 margin-top: 10px;
               }
+              .signature-section {
+                text-align: right;
+                font-size: 18px;
+                margin-top: 60px;
+              }
               .bg-image {
                   position: relative;
                   z-index: 1;
@@ -209,7 +224,7 @@ export class CashDetailsAddComponent implements OnInit {
                   pointer-events: none;
                 }
               .footer {
-                margin: 40px 10px 20px 10px;
+                margin: 40px 10px 10px 10px;
                 font-size: 12px;
                 color: #666;
                 text-align: center;
@@ -227,13 +242,13 @@ export class CashDetailsAddComponent implements OnInit {
     }, 100);
   }
   public invoiceTotal: number = 0;
-  public tableLength: any = 6;
+  public tableLength: any = 8;
   printAll() {
     if (this.invoiceServies.length > 0) {
       this.invoiceTotal = this.invoiceServies.reduce((total: any, item: any) => {
         return total + Number(item.amount);
       }, 0);
-      this.tableLength = 6 - this.invoiceServies.length;
+      this.tableLength = 8 - this.invoiceServies.length;
       this.submitInvoice();
       setTimeout(() => {
         const printContent = document.getElementById('print-section');
@@ -305,9 +320,14 @@ export class CashDetailsAddComponent implements OnInit {
                 font-size: 18px;
                 margin-top: 10px;
               }
+              .signature-section {
+                text-align: right;
+                font-size: 18px;
+                margin-top: 60px;
+              }
 
               .footer {
-                margin: 40px 10px 20px 10px;
+                margin: 40px 10px 10px 10px;
                 font-size: 12px;
                 color: #666;
                 text-align: center;
