@@ -15,7 +15,6 @@
 }
 .tagify{
     width: 100%;
-    --tag-border-color: lightgrey;
     --tag-remove-btn-bg--hover:#c77777;
 }
 .tagify__tag div{

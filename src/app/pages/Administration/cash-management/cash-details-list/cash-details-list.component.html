@@ -16,19 +16,80 @@
 
         <div class="row mb-4">
             <div class="col-md-12">
-                <!-- <div class="card p-2 bg-white mt-2" style="height: 73vh;"> -->
-                    <div class="invoice-container">
-                        <ul class="invoice-list">
-                            <li><strong>Service:</strong> {{ invoice.service }}</li>
-                            <li><strong>Invoice No:</strong>{{invoice.paymentID}}</li>
-                            <li><strong>Date:</strong> {{ invoice.date }}</li>
-                            <li><strong>Payment Type:</strong> {{ invoice.paymentType }}</li>
-                            <!-- <li *ngIf="invoice?.customerID"><strong>Borrower Details:</strong> {{ invoice.customerID }}</li> -->
-                            <li><strong>Processed By:</strong> {{ invoice.processOperator }}</li>
-                            <li><strong>Amount:</strong> {{ '₹'+invoice.amount+'.00' }}</li>
-                        </ul>
+                <div class="invoice-container">
+                    <div class="card p-2 bg-image" style="min-height: 680px;">
+                        <div class="d-flex justify-content-between p-2">
+                            <h4>INVOICE</h4>
+                            <img src="./../../../../../assets/image/logo/sakthi e seva final.png" alt="e-seva-logo"
+                                width="130" height="46">
+                        </div>
+                        <hr class="my-1" />
+                        <div class="d-flex justify-content-between">
+                            <div><strong>Invoice No:</strong> {{paymentID}}</div>
+                            <div><strong>Issued In:</strong> {{ invoice?.[0]?.['date']?(invoice[0]['date'] | date: 'dd/MM/yyyy hh:mm a') : "" }}</div>
+                        </div>
+                        <div class="info-section">
+                            <div>
+                                <h5>E-Seva Info</h5>
+                                <div><strong>{{ shopInfo.name }}</strong></div>
+                                <div>{{ shopInfo.address }}</div>
+                                <div>{{ shopInfo.email }}</div>
+                                <div>{{ shopInfo.mobileNo }}</div>
+                            </div>
+
+                            <div>
+                                <h5>Customer Info</h5>
+                                <div><strong>{{ customerInfo.name }}</strong></div>
+                                <div>{{ customerInfo.mobileNo }}</div>
+                            </div>
+
+                        </div>
+
+                        <table class="invoice-table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Item Description</th>
+                                    <th class="text-center">Reference ID</th>
+                                    <th class="text-center">Qty</th>
+                                    <th class="text-center">Unit Price</th>
+                                    <th class="text-center">Total Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of invoice">
+                                    <td>{{ item.service}}</td>
+                                    <td>{{item.ReferenceID}}</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-end">₹{{ item.amount }}</td>
+                                    <td class="text-end">₹{{ item.amount }}</td>
+                                </tr>
+                                <tr *ngFor="let item of tableLength | num_sequence">
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="total-section">
+                            <strong>Total Amount: ₹{{ invoiceTotal }}</strong>
+                        </div>
+
+                        <div class="signature-section me-2">
+                            {{ invoice?.[0]?.['processOperator'] ?? "" }}
+                        </div>
+
+                        <div class="footer">
+                            <p class="mb-0">
+                                தங்கள் வருகைக்கு நன்றி. எங்களது சேவை உங்களுக்கு திருப்திகரமாக இருந்தால் மேலும்
+                                ஒருவருக்காவது
+                                பகிர்ந்து சொல்லுங்கள்.
+                            </p>
+                        </div>
                     </div>
-                <!-- </div> -->
+                </div>
             </div>
         </div>
     </div>

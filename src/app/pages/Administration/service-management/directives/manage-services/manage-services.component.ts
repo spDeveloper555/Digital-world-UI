@@ -1,60 +1,112 @@
-import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../../../core/services/api.service';
 import { UtilityService } from '../../../../../core/services/utility.service';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  QueryList,
+  ViewChildren
+} from '@angular/core';
+
+declare let Tagify: any;
+
 @Component({
   selector: 'e-seva-manage-services',
   templateUrl: './manage-services.component.html',
-  styleUrl: './manage-services.component.css'
+  styleUrls: ['./manage-services.component.css']
 })
-export class ManageServiceComponent {
+export class ManageServiceComponent implements AfterViewInit {
   public isLoading: boolean = true;
+  servicesRows: any[] = [{ service: '', amount: '', subservices: [] }];
+
+  @ViewChildren('tagifyInput') tagifyInputs!: QueryList<ElementRef>;
+
   constructor(
     public api: ApiService,
     public utility: UtilityService,
     public router: Router
-  ) { }
-  public servicesRows: any = [{ service: '', amount: '' }];
-  public subServicesRows: any = [{ subService: '' }];
+  ) {}
+
   ngOnInit() {
     this.getServices();
   }
+
   async getServices() {
     this.isLoading = true;
-    let res: any = await this.api.getManageService({ 'isList': true })?.catch((error: any) => { console.log(error) });
-    if (res['status'] == 'success') {
-      this.servicesRows = res?.['services'] ?? [{ service: '', amount: '' }];
-      this.subServicesRows = res?.['subServices'] ?? [{ subService: '' }];
-      this.isLoading = false;
+    let res: any = await this.api.getManageService({ isList: true })?.catch((error: any) => {
+      console.log(error);
+    });
+
+    if (res?.status === 'success') {
+      this.servicesRows = res?.services?.map((item: any) => ({
+        service: item.service ?? '',
+        amount: item.amount ?? '',
+        subservices: item.subservices ?? []
+      })) ?? [{ service: '', amount: '', subservices: [] }];
     }
+
+    this.isLoading = false;
+
+    setTimeout(() => this.initializeTagify(), 0);
   }
+
+  ngAfterViewInit() {
+    this.initializeTagify();
+  }
+
+  initializeTagify() {
+    this.tagifyInputs?.forEach((inputRef, index) => {
+      const input = inputRef.nativeElement;
+      if (!input._tagify) {
+        const tagifyInstance = new Tagify(input, {
+          whitelist: [], // you can add predefined tags here
+          enforceWhitelist: false,
+          dropdown: {
+            enabled: 0
+          }
+        });
+
+        // Set default values if present
+        if (this.servicesRows[index].subservices?.length) {
+          tagifyInstance.addTags(this.servicesRows[index].subservices);
+        }
+
+        // On tag change, update the model
+        tagifyInstance.on('change', () => {
+          const tags = tagifyInstance.value.map((tag: any) => tag.value);
+          this.servicesRows[index].subservices = tags;
+        });
+
+        input._tagify = tagifyInstance;
+      }
+    });
+  }
+
   addRow(index: number) {
-    this.servicesRows.splice(index + 1, 0, { service: '', amount: '' });
+    this.servicesRows.splice(index + 1, 0, {
+      service: '',
+      amount: '',
+      subservices: []
+    });
+    setTimeout(() => this.initializeTagify(), 0);
   }
 
   removeRow(index: number) {
-    if (this.servicesRows.length > 1) {
-      this.servicesRows.splice(index, 1);
-    }
-  }
-  addSubRow(index: number) {
-    this.subServicesRows.splice(index + 1, 0, { subService: '' });
+    this.servicesRows.splice(index, 1);
   }
 
-  removeSubRow(index: number) {
-    if (this.subServicesRows.length > 1) {
-      this.subServicesRows.splice(index, 1);
-    }
-  }
   async onSubmit() {
-    let obj: any = {
-      services: this.servicesRows,
-      subServices: this.subServicesRows
+    const payload = {
+      services: this.servicesRows
     };
-    let res: any = await this.api.updateManageService(obj)?.catch((error: any) => { console.log(error) });
-    if (res['status'] == 'success') {
+
+    let res: any = await this.api.updateManageService(payload)?.catch((error: any) => {
+      console.log(error);
+    });
+
+    if (res?.status === 'success') {
       this.getServices();
     }
   }
-
 }

@@ -74,7 +74,6 @@ export class CashDetailsAddComponent implements OnInit {
     if (res['status'] == 'success') {
       this.services_obj = res['services'] ?? { };
       this.services = Object.keys(this.services_obj);
-      this.subServices = res['subServices'] ?? [];
     }
   }
   onPatchData() {
@@ -93,8 +92,14 @@ export class CashDetailsAddComponent implements OnInit {
       this.paymentDetailsForm[field] = value;
       this.errorObj[field] = "";
     }
+    if (field == 'service' && this.services_obj?.[value]) this.subServices = this.services_obj[value]['subservices'];
+    else if (field == 'service') {
+      this.subServices = [];
+      this.paymentDetailsForm['subService'] = '';
+    }
+    
     if (field == 'paymentType' && this.paymentDetailsForm[field] == 'Credit') {
-      this.paymentDetailsForm['amount'] = this.services_obj[this.paymentDetailsForm['service']]
+      this.paymentDetailsForm['amount'] = this.services_obj[this.paymentDetailsForm['service']]['amount'] ?? '';
     } else if (field == 'paymentType') this.paymentDetailsForm['amount'] = '';
   }
   addInvoice() {

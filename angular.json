@@ -26,10 +26,13 @@
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/css/tagify-lib.css",
+              "src/assets/css/tagify.css",
               "src/styles.css"
             ],
             "scripts": [
               "src/assets/echarts/echarts.min.js",
+              "src/assets/tagify/tagify.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
@@ -86,10 +89,13 @@
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/css/tagify-lib.css",
+              "src/assets/css/tagify.css",
               "src/styles.css"
             ],
             "scripts": [
               "src/assets/echarts/echarts.min.js",
+              "src/assets/tagify/tagify.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           }
